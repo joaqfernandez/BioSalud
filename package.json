@@ -1,0 +1,8 @@
+{
+  "name": "biosalud",
+  "version": "1.0.0",
+  "description": "BIO Salud - Sitio web",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --open=index.html"
+  }
+}
