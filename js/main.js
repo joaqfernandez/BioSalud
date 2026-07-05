@@ -18,13 +18,43 @@
   burger.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
   nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
-  // Reveal on scroll (una vez)
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  // Reveal on scroll (una vez). CSS shows .reveal elements by default;
+  // elements already visible on load get 'in' immediately with no hidden
+  // frame, and only elements still below the fold are opted into the
+  // hidden + IntersectionObserver treatment via 'js-reveal' on <html>.
+  var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal:not(.in)')).filter(function (el) {
+    var r = el.getBoundingClientRect();
+    var visible = r.top < window.innerHeight * 0.92 && r.bottom > 0;
+    if (visible) { el.classList.add('in'); }
+    return !visible;
+  });
+  if (pending.length) {
+    document.documentElement.classList.add('js-reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    pending.forEach(function (el) { io.observe(el); });
+  }
+
+  // Equipo: hover vinculado entre foto y nombre (mismo data-member)
+  var showcase = document.getElementById('teamShowcase');
+  if (showcase) {
+    var members = Array.prototype.slice.call(showcase.querySelectorAll('[data-member]'));
+    var setHovered = function (id) {
+      members.forEach(function (el) {
+        var isMatch = el.getAttribute('data-member') === id;
+        el.classList.toggle('is-active', !!id && isMatch);
+        el.classList.toggle('is-dimmed', !!id && !isMatch);
+      });
+    };
+    members.forEach(function (el) {
+      var id = el.getAttribute('data-member');
+      el.addEventListener('mouseenter', function () { setHovered(id); });
+      el.addEventListener('mouseleave', function () { setHovered(null); });
     });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  document.querySelectorAll('.reveal:not(.in)').forEach(function (el) { io.observe(el); });
+  }
 
   // Scroll-spy en la nav
   var links = {};
@@ -39,7 +69,7 @@
       }
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  ['especialidades', 'espacio', 'agendar', 'ubicacion'].forEach(function (id) {
+  ['equipo', 'especialidades', 'espacio', 'agendar', 'ubicacion'].forEach(function (id) {
     var s = document.getElementById(id); if (s) spy.observe(s);
   });
 })();

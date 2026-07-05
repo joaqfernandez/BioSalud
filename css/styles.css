@@ -74,8 +74,6 @@ button { font-family: inherit }
   padding: 0 28px
 }
 
-.muted { color: rgba(22, 48, 44, .6) }
-
 .eyebrow {
   font-family: var(--mono);
   font-size: .72rem;
@@ -192,8 +190,6 @@ h1, h2, h3, h4 {
   letter-spacing: .01em
 }
 
-.brand .name b { font-weight: 600 }
-
 nav.main { display: flex; align-items: center; gap: 4px }
 
 nav.main a.link {
@@ -217,7 +213,7 @@ nav.main .cta { margin-left: 10px }
   display: none;
   background: none;
   border: 0;
-  padding: 8px;
+  padding: 9px;
   cursor: pointer;
   color: var(--bosque)
 }
@@ -279,8 +275,6 @@ nav.main .cta { margin-left: 10px }
   font-size: clamp(2.7rem, 6.6vw, 5.2rem);
   max-width: 14ch;
 }
-
-.hero h1 em { font-style: italic; color: #cfe7e3 }
 
 .hero .sub {
   max-width: 600px;
@@ -411,6 +405,172 @@ nav.main .cta { margin-left: 10px }
   pointer-events: none
 }
 
+/* ----- equipo ----- */
+.team-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 34px;
+}
+
+@media(min-width:860px) {
+  .team-showcase { flex-direction: row; gap: 108px }
+}
+
+/* photo grid: three staggered columns, offsets kept irregular on purpose
+   so the group reads as candid rather than a neat, evenly-stepped grid */
+.team-photos {
+  display: flex;
+  gap: 10px;
+  flex: none;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  max-width: 100%;
+}
+
+@media(min-width:860px) { .team-photos { gap: 16px } }
+
+.team-col { display: flex; flex-direction: column; gap: 10px }
+
+@media(min-width:860px) { .team-col { gap: 14px } }
+
+.team-col-1 { margin-top: 20px }
+.team-col-2 { margin-top: 0 }
+.team-col-3 { margin-top: 96px }
+
+.team-col-1 .team-photo:nth-child(2) { margin-top: 18px }
+
+@media(min-width:640px) {
+  .team-col-1 { margin-top: 30px }
+  .team-col-2 { margin-top: 0 }
+  .team-col-3 { margin-top: 126px }
+  .team-col-1 .team-photo:nth-child(2) { margin-top: 24px }
+}
+
+@media(min-width:860px) {
+  .team-col-1 { margin-top: 38px }
+  .team-col-2 { margin-top: 0 }
+  .team-col-3 { margin-top: 150px }
+  .team-col-1 .team-photo:nth-child(2) { margin-top: 30px }
+}
+
+.team-photo {
+  flex: none;
+  width: 158px; height: 174px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--niebla);
+  transition: opacity 380ms ease;
+}
+
+.team-col-2 .team-photo { width: 192px; height: 210px }
+.team-col-3 .team-photo { width: 168px; height: 182px }
+
+@media(min-width:640px) {
+  .team-photo { width: 192px; height: 208px }
+  .team-col-2 .team-photo { width: 228px; height: 246px }
+  .team-col-3 .team-photo { width: 203px; height: 216px }
+}
+
+@media(min-width:860px) {
+  .team-photo { width: 226px; height: 242px }
+  .team-col-2 .team-photo { width: 264px; height: 282px }
+  .team-col-3 .team-photo { width: 237px; height: 253px }
+}
+
+.team-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(.8);
+  transition: filter 460ms ease;
+}
+
+.team-photo.is-active img { filter: grayscale(0) brightness(1) }
+.team-photo.is-dimmed { opacity: .6 }
+
+/* name list */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  flex: 1;
+  width: 100%;
+  padding-top: 6px;
+}
+
+@media(min-width:860px) { .team-list { padding-left: 28px } }
+
+@media(min-width:520px) and (max-width:859px) {
+  .team-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px }
+}
+
+.team-row { cursor: pointer; transition: opacity 260ms ease }
+
+.team-row.is-dimmed { opacity: .5 }
+
+.row-head { display: flex; align-items: center; gap: 13px }
+
+.pill {
+  width: 20px; height: 15px;
+  border-radius: 6px;
+  background: var(--line);
+  flex: none;
+  transition: all 260ms ease;
+}
+
+.team-row.is-active .pill { width: 26px; background: var(--teal) }
+
+.row-head .name {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgba(22, 48, 44, .8);
+  transition: color 260ms ease;
+}
+
+.team-row.is-active .row-head .name { color: var(--bosque) }
+
+.row-social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 2px;
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.team-row.is-active .row-social { opacity: 1; transform: none; pointer-events: auto }
+
+.row-social a {
+  width: 29px; height: 29px;
+  border-radius: 8px;
+  background: var(--teal-08);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.row-social a svg { width: 13px; height: 13px }
+
+@media(hover:hover) {
+  .row-social a:hover { background: var(--teal); color: #fff; transform: scale(1.1) }
+}
+
+.team-row .role {
+  margin: 9px 0 0 33px;
+  font-family: var(--mono);
+  font-size: .76rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--aqua);
+}
+
 /* ----- especialidades ----- */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px }
 
@@ -471,7 +631,7 @@ nav.main .cta { margin-left: 10px }
 
 .value .ic svg { width: 100%; height: 100% }
 
-.value h4 { font-size: 1.18rem; font-weight: 500; color: var(--bosque) }
+.value h3 { font-size: 1.18rem; font-weight: 500; color: var(--bosque) }
 
 .value p { margin: 0; font-size: .96rem; color: rgba(22, 48, 44, .66) }
 
@@ -484,10 +644,6 @@ nav.main .cta { margin-left: 10px }
 }
 
 @media(max-width:900px) { .espacio-block { grid-template-columns: 1fr; gap: 36px } }
-
-.espacio-block .copy .eyebrow { color: var(--sol-deep) }
-
-.espacio-block .copy .eyebrow .leaf { color: var(--sol) }
 
 .espacio-block h2 { font-size: clamp(2rem, 4vw, 2.8rem) }
 
@@ -566,7 +722,7 @@ nav.main .cta { margin-left: 10px }
   margin-bottom: 18px;
 }
 
-.step h4 { font-size: 1.28rem; font-weight: 500; margin-bottom: 8px }
+.step h3 { font-size: 1.28rem; font-weight: 500; margin-bottom: 8px }
 
 .step p { margin: 0; color: rgba(22, 48, 44, .7); font-size: 1rem }
 
@@ -645,7 +801,7 @@ nav.main .cta { margin-left: 10px }
 
 .hours li span:first-child { color: var(--bosque); font-weight: 500 }
 
-.hours li span:last-child { color: rgba(22, 48, 44, .62); font-variant-numeric: tabular-nums }
+.hours li span:last-child { color: rgba(22, 48, 44, .68); font-variant-numeric: tabular-nums }
 
 .map {
   position: relative;
@@ -730,7 +886,9 @@ footer {
 }
 
 .foot-col a,
-.foot-col p { display: block; color: rgba(255, 255, 255, .74); margin: 0 0 11px; transition: color 160ms ease }
+.foot-col p { display: block; color: rgba(255, 255, 255, .74); margin: 0 0 11px }
+
+.foot-col a { padding: 4px 0; margin: 0 0 7px; transition: color 160ms ease }
 
 @media(hover:hover) { .foot-col a:hover { color: #fff } }
 
@@ -751,9 +909,15 @@ footer {
    REVEAL on scroll
    ============================================================ */
 .reveal {
+  transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out)
+}
+
+/* Hidden-before-reveal state is opt-in via .js-reveal, added by main.js only
+   for elements it has successfully queued in an IntersectionObserver. If the
+   script never runs (blocked, offline, disabled), content stays visible. */
+.js-reveal .reveal:not(.in) {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out)
 }
 
 .reveal.in { opacity: 1; transform: none }
@@ -765,7 +929,7 @@ footer {
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto }
   * { animation: none !important }
-  .reveal { opacity: 1; transform: none; transition: none }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none }
   .drops .d { animation: none !important }
   .btn, .card, .world, .btn-white:hover {
     transition: background 200ms ease, color 200ms ease, border-color 200ms ease

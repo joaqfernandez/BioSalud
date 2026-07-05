@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-04T00:00:00.000Z",
+  "title": "Design System: BIO Salud",
+  "extensions": {
+    "colorMeta": {
+      "teal": { "role": "primary", "displayName": "Deep Teal", "canonical": "#2E7373", "tonalRamp": ["#0d201d", "#123430", "#1B4D45", "#2E7373", "#4a8f8a", "#6FA8A3", "#a9d2cc", "#dceeeb"] },
+      "bosque": { "role": "primary-deep", "displayName": "Bosque", "canonical": "#1B4D45", "tonalRamp": ["#081512", "#0f2b25", "#1B4D45", "#255f56", "#357f7f", "#4a938d", "#7fb8b2", "#c2ddd8"] },
+      "aqua": { "role": "primary-light", "displayName": "Soft Aqua", "canonical": "#6FA8A3", "tonalRamp": ["#1c332f", "#2c4c46", "#3f6a63", "#528880", "#6FA8A3", "#93bfba", "#bcd9d5", "#e3f1ef"] },
+      "sol": { "role": "secondary", "displayName": "Warm Ochre / Sol", "canonical": "#D89A4E", "tonalRamp": ["#3a2608", "#5c3c0f", "#a86a1f", "#c98a3f", "#D89A4E", "#e3b578", "#eecda3", "#f8e6cf"] },
+      "sol-deep": { "role": "secondary-deep", "displayName": "Sol Deep", "canonical": "#a86a1f", "tonalRamp": ["#2a1a06", "#43290b", "#5f3a10", "#7c4c17", "#a86a1f", "#c98a3f", "#e3b578", "#f4d9b4"] },
+      "niebla": { "role": "neutral-surface", "displayName": "Mist", "canonical": "#EDF1F0", "tonalRamp": ["#16302C", "#3a4a47", "#69736f", "#9aa3a0", "#c6cdcb", "#EDF1F0", "#f5f7f6", "#fbfcfb"] },
+      "hueso": { "role": "neutral-bg", "displayName": "Bone", "canonical": "#FBFCFB", "tonalRamp": ["#16302C", "#465350", "#727d7a", "#9fa6a4", "#c9cdcc", "#e6e9e8", "#f4f6f5", "#FBFCFB"] },
+      "tinta": { "role": "neutral-ink", "displayName": "Ink", "canonical": "#16302C", "tonalRamp": ["#050a09", "#0c1a17", "#16302C", "#254440", "#3d5d58", "#5c7a75", "#8ba39f", "#c4d3d0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero <h1> only. Weight 300, never bolded." },
+      "headline": { "displayName": "Headline", "purpose": "Section <h2> titles." },
+      "title": { "displayName": "Title", "purpose": "Card and world-block <h3>." },
+      "body": { "displayName": "Body", "purpose": "All paragraph copy, 65-75ch measure." },
+      "label": { "displayName": "Label", "purpose": "Mono, tracked uppercase — hours, tags, step numbers only." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px rgba(22,48,44,.05), 0 4px 12px -8px rgba(22,48,44,.18)", "purpose": "Resting state for cards, buttons, map frame." },
+      { "name": "shadow", "value": "0 1px 2px rgba(22,48,44,.04), 0 18px 40px -18px rgba(22,48,44,.22)", "purpose": "Hover/lift state for cards and world blocks; resting state for mobile nav dropdown and contact CTA." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(.23,1,.32,1)", "purpose": "Default easing for hover lifts, button press, reveals." },
+      { "name": "ease-in-out", "value": "cubic-bezier(.77,0,.175,1)", "purpose": "Ambient floating-drop background animation." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-nav", "value": "920px" },
+      { "name": "duo-stack", "value": "840px" },
+      { "name": "values-grid-2col", "value": "840px" },
+      { "name": "values-grid-1col", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA action (\"Agendá tu consulta\") on light backgrounds.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#contacto\"><svg class=\"ds-leaf\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\"/></svg>Agendá tu consulta</a>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; gap:10px; font-family:'Inter',system-ui,sans-serif; font-weight:600; font-size:.98rem; padding:14px 24px; border-radius:999px; border:1.5px solid transparent; cursor:pointer; transition:transform 160ms cubic-bezier(.23,1,.32,1), background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, color 200ms ease; } .ds-leaf { width:16px; height:16px; flex:none } .ds-btn:active { transform:scale(.97) } .ds-btn-primary { background:#2E7373; color:#fff; box-shadow:0 1px 2px rgba(22,48,44,.05), 0 4px 12px -8px rgba(22,48,44,.18) } .ds-btn-primary:hover { background:#1B4D45 } .ds-btn-primary:focus-visible { outline:2.5px solid #D89A4E; outline-offset:3px; border-radius:6px }"
+    },
+    {
+      "name": "Sol Button",
+      "kind": "button",
+      "refersTo": "button-sol",
+      "description": "Espacio BIO secondary CTA (\"Reservá el espacio\").",
+      "html": "<a class=\"ds-btn ds-btn-sol\" href=\"#espacio\">Reservá el espacio</a>",
+      "css": ".ds-btn-sol { display:inline-flex; align-items:center; gap:10px; font-family:'Inter',system-ui,sans-serif; font-weight:600; font-size:.98rem; padding:14px 24px; border-radius:999px; border:1.5px solid transparent; background:#D89A4E; color:#3a2608; cursor:pointer; transition:transform 160ms cubic-bezier(.23,1,.32,1), background 200ms ease; } .ds-btn-sol:active { transform:scale(.97) } .ds-btn-sol:hover { background:#c98a3f } .ds-btn-sol:focus-visible { outline:2.5px solid #D89A4E; outline-offset:3px; border-radius:6px }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Low-emphasis action, used sparingly (footer email link).",
+      "html": "<a class=\"ds-btn ds-btn-ghost\" href=\"mailto:hola@biosalud.com.ar\">Email</a>",
+      "css": ".ds-btn-ghost { display:inline-flex; align-items:center; gap:10px; font-family:'Inter',system-ui,sans-serif; font-weight:600; font-size:.98rem; padding:14px 24px; border-radius:999px; background:transparent; color:#1B4D45; border:1.5px solid rgba(27,77,69,.12); cursor:pointer; transition:border-color 200ms ease, background 200ms ease, color 200ms ease; } .ds-btn-ghost:hover { border-color:#2E7373; background:rgba(46,115,115,.08); color:#2E7373 }"
+    },
+    {
+      "name": "Specialty Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Oncología / Ginecología / Pediatría cards in the Especialidades grid.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"9\" r=\"4\"/><path d=\"M5.5 21a6.5 6.5 0 0 1 13 0\"/></svg></div><h3>Pediatría</h3><p>Un pediatra de confianza y un ambiente amable para los más chicos.</p><div class=\"ds-card-note\">Confianza · Familia</div></article>",
+      "css": ".ds-card { background:#fff; border:1px solid rgba(27,77,69,.12); border-radius:20px; padding:32px; box-shadow:0 1px 2px rgba(22,48,44,.05), 0 4px 12px -8px rgba(22,48,44,.18); transition:transform 220ms cubic-bezier(.23,1,.32,1), box-shadow 220ms ease, border-color 220ms ease; font-family:'Inter',system-ui,sans-serif; } .ds-card:hover { transform:translateY(-4px); box-shadow:0 1px 2px rgba(22,48,44,.04), 0 18px 40px -18px rgba(22,48,44,.22); border-color:rgba(46,115,115,.14) } .ds-card-ic { width:52px; height:52px; border-radius:14px; background:rgba(46,115,115,.08); color:#2E7373; display:flex; align-items:center; justify-content:center; margin-bottom:20px } .ds-card-ic svg { width:27px; height:27px } .ds-card h3 { font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:1.4rem; color:#1B4D45; margin:0 0 10px } .ds-card p { margin:0; color:rgba(22,48,44,.7); font-size:1rem } .ds-card-note { margin-top:18px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#6FA8A3 }"
+    },
+    {
+      "name": "World Duo Block (Salud)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature two-brands component — the teal-gradient half of the BIO Salud / Espacio BIO duo.",
+      "html": "<article class=\"ds-world ds-world-salud\"><svg class=\"ds-world-bgleaf\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z\"/></svg><span class=\"ds-world-tag\">Marca madre · Salud</span><h3>BIO Salud</h3><p>Atención médica especializada con trato cercano y respetuoso.</p></article>",
+      "css": ".ds-world { position:relative; border-radius:28px; padding:42px 38px; color:#fff; overflow:hidden; min-height:280px; font-family:'Inter',system-ui,sans-serif; transition:transform 240ms cubic-bezier(.23,1,.32,1), box-shadow 240ms ease; } .ds-world-salud { background:linear-gradient(158deg, #2E7373, #1B4D45) } .ds-world:hover { transform:translateY(-5px); box-shadow:0 1px 2px rgba(22,48,44,.04), 0 18px 40px -18px rgba(22,48,44,.22) } .ds-world-tag { font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.82); display:inline-block; margin-bottom:18px } .ds-world h3 { font-family:'Fraunces',Georgia,serif; color:#fff; font-size:2.1rem; font-weight:400; letter-spacing:-.01em; margin:0 } .ds-world p { color:rgba(255,255,255,.92); margin:14px 0 0; font-size:1.04rem } .ds-world-bgleaf { position:absolute; right:-34px; bottom:-34px; width:200px; opacity:.1; color:#fff; pointer-events:none }"
+    },
+    {
+      "name": "Activity Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Espacio BIO activity tags (Yoga, Meditación, Cursos…).",
+      "html": "<span class=\"ds-chip\">Yoga</span>",
+      "css": ".ds-chip { font-family:'Inter',system-ui,sans-serif; font-size:.9rem; background:rgba(216,154,78,.14); color:#a86a1f; padding:8px 15px; border-radius:999px; border:1px solid rgba(216,154,78,.28); display:inline-block }"
+    },
+    {
+      "name": "Primary Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Sticky topbar with blurred translucent background and pill-highlighted links.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">Especialidades</a><a class=\"ds-nav-link\" href=\"#\">Espacio BIOS</a></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; gap:4px; font-family:'Inter',system-ui,sans-serif } .ds-nav-link { font-size:.92rem; color:#1B4D45; padding:8px 14px; border-radius:10px; opacity:.78; text-decoration:none; transition:opacity 160ms ease, background 160ms ease, color 160ms ease } .ds-nav-link:hover, .ds-nav-link-active { opacity:1; background:rgba(46,115,115,.08); color:#2E7373 }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Cuidar y Cultivar",
+    "overview": "The tagline \"Cuidar la vida, cultivar comunidad\" is the literal design brief. Two brands share one visual language: BIO Salud (the clinical practice — teal, bosque, the leaf-mark) tends; Espacio BIO (the community room — sol ochre) cultivates. Every recurring leaf-and-droplet glyph is the bridge between the two: a small piece of botanical calm stitched into an otherwise clinical-adjacent product, so the site never reads as a sterile hospital brochure. Fraunces' warm, slightly organic serif carries the \"tending\" half of the metaphor in headlines; Inter carries the plain-spoken, no-jargon voice in body copy; JetBrains Mono is reserved for small data-like labels (hours, meta stats, step numbers) that need to feel precise without feeling cold.\n\nThis system explicitly rejects sterile clinical-institution aesthetics (cold whites, bureaucratic layout, stock-photo impersonality) and generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon-card grids, gradient text, stacked uppercase eyebrows on every section). Calm is conveyed through soft ambient shadows, generous rounded geometry, and restrained motion — never through hype, urgency, or manufactured scarcity.",
+    "keyCharacteristics": [
+      "Deep teal-to-forest gradients anchor the medical brand; warm ochre gradients anchor the community brand — never blended into one muddy in-between color.",
+      "Fully rounded pill buttons and generously rounded (20–28px) card geometry throughout; nothing sharp-cornered.",
+      "A single recurring leaf/droplet SVG motif ties disparate sections together instead of stock icons.",
+      "Motion is subtle: opacity+translateY reveals on scroll, gentle hover lifts, no bounce or elastic easing."
+    ],
+    "rules": [
+      { "name": "The Two-Gradient Rule", "body": "Teal→bosque gradients belong exclusively to BIO Salud surfaces (hero, contact CTA); ochre gradients belong exclusively to Espacio BIO surfaces. Never mix the two gradient families on the same element.", "section": "colors" },
+      { "name": "The Light-Weight Display Rule", "body": "Fraunces headings never go above weight 500 (hero h1 is weight 300). The warmth comes from the typeface's organic curves, not from bold weight.", "section": "typography" },
+      { "name": "The Lift-Not-Loom Rule", "body": "Elevation only ever deepens on hover/interaction; nothing sits permanently under a heavy shadow. Depth is a response to attention, not a static flourish.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the body background a true near-white (#FBFCFB) — warmth comes from teal/ochre accents and Fraunces typography, never from a tinted cream/sand body.",
+      "Do use fully rounded pill buttons (999px) and generously rounded cards (20–28px) everywhere; soft-confident geometry is the point.",
+      "Do keep shadows ambient and hover-triggered, never a heavy static drop shadow.",
+      "Do reserve JetBrains Mono for short tracked-uppercase labels — never for prose.",
+      "Do keep teal/bosque gradients on BIO Salud surfaces and ochre gradients on Espacio BIO surfaces, kept visually distinct."
+    ],
+    "donts": [
+      "Don't use sterile, cold-white, bureaucratic hospital-site styling.",
+      "Don't reintroduce a tiny uppercase tracked eyebrow above every section — they were deliberately removed from six sections in favor of quieter rhythm.",
+      "Don't use gradient text, identical icon-card grids, hero-metric-tile blocks, or other generic AI-SaaS landing-page scaffolding.",
+      "Don't use border-left/border-right colored stripes as an accent on cards or list items.",
+      "Don't bold Fraunces headings past weight 500.",
+      "Don't blend the teal and ochre gradient families on the same element."
+    ]
+  }
+}
