@@ -446,72 +446,6 @@
       </div>
     </section>
 
-    <!-- ===================== SUMATE AL STAFF ===================== -->
-    <section class="section tight" id="staff">
-      <div class="wrap">
-        <div class="staff-panel reveal">
-          <div class="staff-intro">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="8" r="3.5" />
-                <path d="M2.5 19c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" />
-                <path d="M17 4.5v6M20 7.5h-6" />
-              </svg></div>
-            <h2>¿Sos profesional de la salud?</h2>
-            <p>Si querés trabajar con nosotros, dejanos tus datos y contanos un poco de vos. Leemos todos los
-              mensajes.</p>
-          </div>
-          <form class="staff-form" id="staffForm" method="post" action="#staff" novalidate
-            data-endpoint="" data-mailto="hola@biosalud.com.ar">
-            <!-- Honeypot anti-bots: invisible para personas, los bots suelen completarlo -->
-            <div class="hp-field" aria-hidden="true">
-              <label for="staffWebsite">No completar este campo</label>
-              <input type="text" id="staffWebsite" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="staffNombre">Nombre <span aria-hidden="true">*</span></label>
-                <input type="text" id="staffNombre" name="nombre" autocomplete="given-name" required
-                  minlength="2" maxlength="60" aria-describedby="staffNombreErr">
-                <p class="field-error" id="staffNombreErr" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="staffApellido">Apellido <span aria-hidden="true">*</span></label>
-                <input type="text" id="staffApellido" name="apellido" autocomplete="family-name" required
-                  minlength="2" maxlength="60" aria-describedby="staffApellidoErr">
-                <p class="field-error" id="staffApellidoErr" aria-live="polite"></p>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="staffEspecialidad">Especialidad <span aria-hidden="true">*</span></label>
-                <input type="text" id="staffEspecialidad" name="especialidad" placeholder="Ej: Ginecología"
-                  required minlength="3" maxlength="80" aria-describedby="staffEspecialidadErr">
-                <p class="field-error" id="staffEspecialidadErr" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="staffEmail">Email <span aria-hidden="true">*</span></label>
-                <input type="email" id="staffEmail" name="email" autocomplete="email" required
-                  maxlength="120" inputmode="email" aria-describedby="staffEmailErr">
-                <p class="field-error" id="staffEmailErr" aria-live="polite"></p>
-              </div>
-            </div>
-            <div class="field">
-              <label for="staffMensaje">¿Por qué querés sumarte? <span aria-hidden="true">*</span></label>
-              <textarea id="staffMensaje" name="mensaje" rows="4" required minlength="20" maxlength="1500"
-                aria-describedby="staffMensajeErr"></textarea>
-              <p class="field-error" id="staffMensajeErr" aria-live="polite"></p>
-            </div>
-            <div class="staff-form-foot">
-              <span class="req-note">* Campos obligatorios</span>
-              <button type="submit" class="btn btn-ghost">Enviar postulación</button>
-            </div>
-            <p class="form-status" id="staffStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== ESPACIO BIO ===================== -->
     <section class="section espacio-x" id="espacio">
       <div class="ex-light" aria-hidden="true">
@@ -842,33 +776,94 @@
       </div>
     </section>
 
-    <!-- ===================== CONTACTO ===================== -->
+    <!-- ===================== CONTACTO + SUMATE AL STAFF ===================== -->
     <section class="section tight" id="contacto">
-      <div class="wrap">
-        <div class="contact reveal">
-          <svg class="bgleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
-          </svg>
-          <h2>¿Querés pedir un turno o reservar la sala?</h2>
-          <p>Escribinos por donde te quede más cómodo. Te respondemos en el horario de atención.</p>
-          <div class="actions">
-            <a class="btn btn-white" href="https://wa.me/5492610000000" target="_blank" rel="noopener">
-              <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
-              WhatsApp
-            </a>
-            <a class="btn btn-sol" href="https://www.instagram.com/espacio.biossalud/" target="_blank"
-              rel="noopener">Instagram</a>
-            <a class="btn btn-ghost" href="mailto:hola@biosalud.com.ar"
-              style="color:#eaf4f2;border-color:rgba(255,255,255,.3)">Email</a>
+      <div class="wrap wrap-wide">
+        <div class="contact-grid">
+          <div class="contact reveal">
+            <svg class="bgleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
+            </svg>
+            <h2>¿Querés pedir un turno o reservar la sala?</h2>
+            <p>Escribinos por donde te quede más cómodo. Te respondemos en el horario de atención.</p>
+            <div class="actions">
+              <a class="btn btn-white" href="https://wa.me/5492610000000" target="_blank" rel="noopener">
+                <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                WhatsApp
+              </a>
+              <a class="btn btn-sol" href="https://www.instagram.com/espacio.biossalud/" target="_blank"
+                rel="noopener">Instagram</a>
+              <a class="btn btn-ghost" href="mailto:hola@biosalud.com.ar"
+                style="color:#eaf4f2;border-color:rgba(255,255,255,.3)">Email</a>
+            </div>
+          </div>
+          <div class="staff-panel reveal" id="staff" data-d="1">
+            <div class="staff-intro">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="8" r="3.5" />
+                  <path d="M2.5 19c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" />
+                  <path d="M17 4.5v6M20 7.5h-6" />
+                </svg></div>
+              <h2>¿Sos profesional de la salud?</h2>
+              <p>Si querés trabajar con nosotros, dejanos tus datos y contanos un poco de vos. Leemos todos los
+                mensajes.</p>
+            </div>
+            <form class="staff-form" id="staffForm" method="post" action="#staff" novalidate
+              data-endpoint="" data-mailto="hola@biosalud.com.ar">
+              <!-- Honeypot anti-bots: invisible para personas, los bots suelen completarlo -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="staffWebsite">No completar este campo</label>
+                <input type="text" id="staffWebsite" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="staffNombre">Nombre <span aria-hidden="true">*</span></label>
+                  <input type="text" id="staffNombre" name="nombre" autocomplete="given-name" required
+                    minlength="2" maxlength="60" aria-describedby="staffNombreErr">
+                  <p class="field-error" id="staffNombreErr" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="staffApellido">Apellido <span aria-hidden="true">*</span></label>
+                  <input type="text" id="staffApellido" name="apellido" autocomplete="family-name" required
+                    minlength="2" maxlength="60" aria-describedby="staffApellidoErr">
+                  <p class="field-error" id="staffApellidoErr" aria-live="polite"></p>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="staffEspecialidad">Especialidad <span aria-hidden="true">*</span></label>
+                  <input type="text" id="staffEspecialidad" name="especialidad" placeholder="Ej: Ginecología"
+                    required minlength="3" maxlength="80" aria-describedby="staffEspecialidadErr">
+                  <p class="field-error" id="staffEspecialidadErr" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="staffEmail">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="staffEmail" name="email" autocomplete="email" required
+                    maxlength="120" inputmode="email" aria-describedby="staffEmailErr">
+                  <p class="field-error" id="staffEmailErr" aria-live="polite"></p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="staffMensaje">¿Por qué querés sumarte? <span aria-hidden="true">*</span></label>
+                <textarea id="staffMensaje" name="mensaje" rows="4" required minlength="20" maxlength="1500"
+                  aria-describedby="staffMensajeErr"></textarea>
+                <p class="field-error" id="staffMensajeErr" aria-live="polite"></p>
+              </div>
+              <div class="staff-form-foot">
+                <span class="req-note">* Campos obligatorios</span>
+                <button type="submit" class="btn btn-ghost">Enviar postulación</button>
+              </div>
+              <p class="form-status" id="staffStatus" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ===================== FOOTER ===================== -->
