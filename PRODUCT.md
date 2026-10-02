@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Two audiences share one page: (1) patients and families in Godoy Cruz, Mendoza seeking oncology, gynecology, or pediatric care — often arriving anxious, sometimes older or less tech-comfortable, needing to feel reassured before they book; (2) workshop facilitators and organizers (yoga, meditation, courses, talks) evaluating whether Espacio BIO is a calm, well-located, hassle-free room to rent. Both need to move quickly from landing to action: book a consultation or ask about space availability.
+Two audiences share one page: (1) patients and families in Godoy Cruz, Mendoza seeking oncology, gynecology, or pediatric care — often arriving anxious, sometimes older or less tech-comfortable, needing to feel reassured before they book; (2) workshop facilitators and organizers (yoga, meditation, courses, talks) evaluating whether Espacio BIOS is a calm, well-located, hassle-free room to rent. Both need to move quickly from landing to action: book a consultation or ask about space availability.
 
 ## Product Purpose
 
-A single institutional landing page for BIO Salud: a medical practice (oncology, gynecology, pediatrics) that also operates Espacio BIO, a community space rented out for workshops, courses, and talks. The page exists to build trust fast and drive two conversions — booking a consultation (WhatsApp/Instagram/email) and inquiring about the space. Success looks like visitors immediately understanding the "two worlds, one roof" premise and reaching a contact action without friction.
+A single institutional landing page for BIOS Salud: a medical practice (oncology, gynecology, pediatrics) that also operates Espacio BIOS, a community space rented out for workshops, courses, and talks. The page exists to build trust fast and drive two conversions — booking a consultation (WhatsApp/Instagram/email) and inquiring about the space. Success looks like visitors immediately understanding the "two worlds, one roof" premise and reaching a contact action without friction.
 
 ## Brand Personality
 
@@ -18,11 +18,11 @@ Calm, trustworthy, warm. Voice is Argentine voseo, direct and close ("Agendá", 
 
 ## Anti-references
 
-Sterile, clinical hospital-site aesthetics (cold whites, bureaucratic layouts, impersonal stock imagery) — the brand's warmth (teal/bosque + ochre "sol" accent, Fraunces serif display) exists specifically to counter that feel. Also avoid generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon+heading+text card grids, gradient text, tiny uppercase eyebrows stacked above every section) — the site already had per-section eyebrow kickers removed in favor of a quieter section rhythm; keep that direction rather than reintroducing the pattern.
+Sterile, clinical hospital-site aesthetics (cold whites, bureaucratic layouts, impersonal stock imagery) — the brand's warmth (teal/bosque + ochre "sol" accent, Young Serif display) exists specifically to counter that feel. Also avoid generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon+heading+text card grids, gradient text, tiny uppercase eyebrows stacked above every section) — the site already had per-section eyebrow kickers removed in favor of a quieter section rhythm; keep that direction rather than reintroducing the pattern.
 
 ## Design Principles
 
-- **Two worlds, one roof.** BIO Salud (medical) and Espacio BIO (community space) are always presented as related but distinct — never blur the medical brand's clinical credibility with the space-rental pitch, or vice versa.
+- **Two worlds, one roof.** BIOS Salud (medical) and Espacio BIOS (community space) are always presented as related but distinct — never blur the medical brand's clinical credibility with the space-rental pitch, or vice versa.
 - **Rigor without coldness.** Every section should read as professionally serious and personally warm at the same time; neither trait should crowd out the other.
 - **Calm over hype.** No exclamation-heavy urgency, no manufactured scarcity. Trust is built through clarity, not pressure — fitting for visitors who may be anxious (oncology/pediatric patients).
 - **Plain language, no jargon.** Copy should read the way a caring person explains things, not the way an institution announces them.

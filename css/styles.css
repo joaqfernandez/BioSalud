@@ -20,9 +20,11 @@
   --shadow: 0 1px 2px rgba(22, 48, 44, .04), 0 18px 40px -18px rgba(22, 48, 44, .22);
 
   /* tipografía */
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Inter', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Young Serif tiene un solo peso (400). No pedir 500/600: el navegador
+     inventaría una negrita falsa. La jerarquía sale del tamaño. */
+  --serif: 'Young Serif', Georgia, serif;
+  /* Atkinson Hyperlegible: diseñada para lectores con baja visión */
+  --sans: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif;
 
   /* radios */
   --r: 20px;
@@ -45,14 +47,17 @@ body {
   background: var(--hueso);
   color: var(--tinta);
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.65;
+  font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block }
+
+p, li { text-wrap: pretty }
 
 a {
   color: var(--teal);
@@ -75,10 +80,7 @@ button { font-family: inherit }
 }
 
 .eyebrow {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
+  font-size: 1rem;
   color: var(--teal);
   font-weight: 500;
   display: inline-flex;
@@ -97,7 +99,9 @@ button { font-family: inherit }
 h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 400;
-  line-height: 1.08;
+  font-synthesis: none;
+  line-height: 1.12;
+  text-wrap: balance;
   color: var(--bosque);
   margin: 0
 }
@@ -185,9 +189,7 @@ h1, h2, h3, h4 {
 .brand .name {
   font-family: var(--serif);
   font-size: 1.18rem;
-  color: var(--bosque);
-  font-weight: 500;
-  letter-spacing: .01em
+  color: var(--bosque)
 }
 
 nav.main { display: flex; align-items: center; gap: 4px }
@@ -270,10 +272,10 @@ nav.main .cta { margin-left: 10px }
 
 .hero h1 {
   color: #fff;
-  font-weight: 300;
-  letter-spacing: -.015em;
-  font-size: clamp(2.7rem, 6.6vw, 5.2rem);
-  max-width: 14ch;
+  letter-spacing: -.01em;
+  line-height: 1.08;
+  font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+  max-width: 20ch;
 }
 
 .hero .sub {
@@ -296,10 +298,8 @@ nav.main .cta { margin-left: 10px }
 }
 
 .hero .meta .k {
-  font-family: var(--mono);
-  font-size: .68rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  font-size: .88rem;
+  font-weight: 500;
   color: #a9d2cc
 }
 
@@ -368,16 +368,14 @@ nav.main .cta { margin-left: 10px }
 }
 
 .world .tag {
-  font-family: var(--mono);
-  font-size: .66rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .82);
+  font-size: .92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .86);
   display: inline-block;
   margin-bottom: 18px;
 }
 
-.world h3 { color: #fff; font-size: 2.1rem; font-weight: 400; letter-spacing: -.01em }
+.world h3 { color: #fff; font-size: 2.1rem; letter-spacing: -.01em }
 
 .world p { color: rgba(255, 255, 255, .92); margin: 14px 0 0; font-size: 1.04rem }
 
@@ -491,8 +489,8 @@ nav.main .cta { margin-left: 10px }
 
 .row-head .name {
   font-family: var(--serif);
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  white-space: nowrap;
   color: rgba(22, 48, 44, .8);
   transition: color 260ms ease;
 }
@@ -530,13 +528,9 @@ nav.main .cta { margin-left: 10px }
 }
 
 .team-row .role {
-  margin: 9px 0 0 33px;
-  font-family: var(--mono);
-  font-size: .76rem;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--aqua);
+  margin: 6px 0 0 33px;
+  font-size: 1rem;
+  color: var(--teal);
 }
 
 /* ----- especialidades ----- */
@@ -572,17 +566,15 @@ nav.main .cta { margin-left: 10px }
 
 .card .ic svg { width: 27px; height: 27px }
 
-.card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 10px }
+.card h3 { font-size: 1.4rem; margin-bottom: 10px }
 
-.card p { margin: 0; color: rgba(22, 48, 44, .7); font-size: 1rem }
+.card p { margin: 0; color: rgba(22, 48, 44, .76); font-size: 1rem }
 
 .card .note {
   margin-top: 18px;
-  font-family: var(--mono);
-  font-size: .7rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--aqua);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--teal);
 }
 
 /* ----- valores ----- */
@@ -600,9 +592,9 @@ nav.main .cta { margin-left: 10px }
 
 .value .ic svg { width: 100%; height: 100% }
 
-.value h3 { font-size: 1.18rem; font-weight: 500; color: var(--bosque) }
+.value h3 { font-size: 1.25rem; color: var(--bosque) }
 
-.value p { margin: 0; font-size: .96rem; color: rgba(22, 48, 44, .66) }
+.value p { margin: 0; font-size: 1rem; color: rgba(22, 48, 44, .76) }
 
 /* ----- espacio bio ----- */
 .espacio-block {
@@ -652,10 +644,8 @@ nav.main .cta { margin-left: 10px }
 }
 
 .espacio-visual .who {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  font-size: .95rem;
+  font-weight: 600;
   position: relative;
   z-index: 2
 }
@@ -677,9 +667,8 @@ nav.main .cta { margin-left: 10px }
 .step { position: relative; padding-top: 18px }
 
 .step .n {
-  font-family: var(--mono);
-  font-size: .8rem;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: 1.3rem;
   color: var(--teal);
   width: 40px;
   height: 40px;
@@ -691,9 +680,9 @@ nav.main .cta { margin-left: 10px }
   margin-bottom: 18px;
 }
 
-.step h3 { font-size: 1.28rem; font-weight: 500; margin-bottom: 8px }
+.step h3 { font-size: 1.3rem; margin-bottom: 8px }
 
-.step p { margin: 0; color: rgba(22, 48, 44, .7); font-size: 1rem }
+.step p { margin: 0; color: rgba(22, 48, 44, .76); font-size: 1rem }
 
 .ai-note {
   margin-top: 40px;
@@ -715,10 +704,8 @@ nav.main .cta { margin-left: 10px }
 .ai-note p { margin: 6px 0 0; font-size: .98rem; color: rgba(22, 48, 44, .72) }
 
 .ai-note .soon {
-  font-family: var(--mono);
-  font-size: .64rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  font-size: .82rem;
+  font-weight: 600;
   color: var(--sol-deep);
   background: var(--sol-12);
   padding: 3px 9px;
@@ -827,8 +814,7 @@ nav.main .cta { margin-left: 10px }
   display: block;
   font-family: var(--serif);
   font-size: 1.3rem;
-  color: var(--bosque);
-  font-weight: 500
+  color: var(--bosque)
 }
 
 .loc-info .pin .addr span { color: rgba(22, 48, 44, .66); font-size: .98rem }
@@ -870,7 +856,7 @@ nav.main .cta { margin-left: 10px }
   overflow: hidden;
 }
 
-.contact h2 { color: #fff; font-weight: 300; font-size: clamp(2rem, 4.4vw, 3.1rem) }
+.contact h2 { color: #fff; font-size: clamp(1.9rem, 4vw, 2.8rem); max-width: 22ch; margin: 0 auto }
 
 .contact p { max-width: 520px; margin: 18px auto 34px; color: #dceeeb; font-size: 1.12rem }
 
@@ -917,16 +903,13 @@ footer {
 
 .foot-brand img { width: 38px; height: 38px }
 
-.foot-brand .name { font-family: var(--serif); font-size: 1.3rem; color: #fff; font-weight: 500 }
+.foot-brand .name { font-family: var(--serif); font-size: 1.3rem; color: #fff }
 
 .foot-col h5 {
-  font-family: var(--mono);
-  font-size: .68rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--aqua);
-  margin: 0 0 16px;
-  font-weight: 500
+  font-size: .95rem;
+  color: #a9d2cc;
+  margin: 0 0 14px;
+  font-weight: 600
 }
 
 .foot-col a,
@@ -947,7 +930,6 @@ footer {
   font-size: .84rem
 }
 
-.foot-bottom .sub { font-family: var(--mono); letter-spacing: .04em }
 
 /* ============================================================
    REVEAL on scroll
