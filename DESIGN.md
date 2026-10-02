@@ -132,9 +132,9 @@ A two-brand palette built on one deep teal-green family (BIOS Salud) plus one wa
 **Character:** Lexend was designed to reduce visual stress and improve reading fluency. Its open, slightly wide letterforms suit an audience that skews older or arrives anxious. The zero is a plain oval with no slash or dot; this was a client request, and it also keeps numbers in addresses and phone numbers looking like ordinary print. The site deliberately uses one unified family: hierarchy comes from size and weight, not from pairing faces. There is no monospace: mono labels read as tech costume on a medical site.
 
 ### Hierarchy
-- **Display** (400, `clamp(2.4rem, 5.6vw, 4.4rem)`, line-height 1.08, letter-spacing -0.01em): hero `<h1>` only.
-- **Headline** (400, `clamp(2rem, 4.2vw, 3rem)`, line-height 1.12): section `<h2>`.
-- **Title** (400, 1.25–2.1rem): card, team and world-block headings.
+- **Display** (600, uppercase, `clamp(3.6rem, 12.2vw, 10rem)`, line-height 0.92, letter-spacing -0.035em): hero `<h1>` "BIOS Salud" only, over the white leaf-mark as an 11%-opacity watermark. The hero is centered and at least one viewport tall. Behind it are a static 26px white dot grid at 16% opacity and a soft dark-teal radial veil behind the copy, on top of the teal gradient and the floating drops. It has no eyebrow, and the dot grid has no interaction. The tagline "Cuidar la vida, cultivar comunidad." sits below it at 500, `clamp(1.35rem, 2.5vw, 1.9rem)`.
+- **Headline** (500, `clamp(2rem, 4.2vw, 3rem)`, line-height 1.12, letter-spacing -0.02em): section `<h2>`.
+- **Title** (500, 1.25–2.1rem): card, team and world-block headings.
 - **Body** (400, 1.0625rem, line-height 1.65): all prose; lead paragraphs 1.2rem. Measure capped around 65–75ch.
 - **Label** (Lexend 600, ~0.9rem, sentence case, no tracking): tags, notes, footer column headers, badges.
 

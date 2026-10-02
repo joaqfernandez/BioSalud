@@ -260,36 +260,120 @@ nav.main .cta { margin-left: 10px }
   color: #eaf4f2;
   background: radial-gradient(125% 95% at 82% -12%, #357f7f 0%, var(--teal) 40%, var(--bosque) 100%);
   padding: 110px 0 96px;
+  min-height: max(600px, calc(100svh - 72px));
+  display: flex;
+  align-items: center;
 }
 
-.hero .wrap { position: relative; z-index: 3 }
+/* Grilla de puntos estática */
+.hero .dot-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, .16) 1.1px, transparent 1.6px);
+  background-size: 26px 26px;
+  background-position: center;
+}
+
+/* Velo suave detrás del texto para que la grilla no ensucie la lectura */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 40% 36% at 50% 50%, rgba(27, 77, 69, .72) 0%, rgba(27, 77, 69, 0) 100%);
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Entrada escalonada con desenfoque */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .wrap > * { animation: hero-enter 600ms cubic-bezier(.22, 1, .36, 1) both }
+  .hero .wrap > :nth-child(2) { animation-delay: 80ms }
+  .hero .wrap > :nth-child(3) { animation-delay: 160ms }
+  .hero .wrap > :nth-child(4) { animation-delay: 240ms }
+  .hero .wrap > :nth-child(5) { animation-delay: 320ms }
+}
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(14px); filter: blur(6px) }
+  to { opacity: 1; transform: none; filter: blur(0) }
+}
+
+/* Nombre gigante con el logo blanco de fondo, como marca de agua */
+.hero-title {
+  position: relative;
+  isolation: isolate;
+  margin: 6px 0 0;
+}
 
 .hero-mark {
-  width: 96px;
-  height: 96px;
-  margin-bottom: 26px;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .22))
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: 250%;
+  max-height: 560px;
+  transform: translate(-50%, -50%);
+  opacity: .11;
+  /* El PNG es de 150px: un desenfoque leve evita que se vea pixelado al agrandarlo */
+  filter: blur(1.5px);
+  pointer-events: none;
+  user-select: none;
 }
 
+@media(max-width:640px) { .hero-mark { height: 340% } }
+
 .hero h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: .26em;
   color: #fff;
+  font-size: clamp(3.6rem, 12.2vw, 10rem);
+  font-weight: 600;
+  line-height: .92;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  text-shadow: 0 18px 50px rgba(10, 36, 32, .28);
+}
+
+.hero .tagline {
+  margin: 26px 0 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.25;
   letter-spacing: -.01em;
-  line-height: 1.08;
-  font-size: clamp(2.4rem, 5.6vw, 4.4rem);
-  max-width: 20ch;
+  color: #fff;
 }
 
 .hero .sub {
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 24px;
   font-size: 1.18rem;
   line-height: 1.6;
   color: #dceeeb
 }
 
-.hero .actions { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap }
+.hero .actions { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center }
 
 .hero .meta {
+  width: 100%;
+  max-width: 860px;
+  justify-content: center;
   margin-top: 54px;
   display: flex;
   gap: 38px;
@@ -790,6 +874,20 @@ nav.main .cta { margin-left: 10px }
 
 .req-note { font-size: .82rem; color: rgba(22, 48, 44, .55) }
 
+/* Honeypot: fuera de pantalla (no display:none, algunos bots lo detectan) */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
+
+.field-error { margin: 0; min-height: 0; font-size: .82rem; color: #a3342b }
+.field-error:empty { display: none }
+
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #a3342b }
+
+.form-status { margin: 0; font-size: .9rem; color: var(--bosque) }
+.form-status:empty { display: none }
+.form-status.is-error { color: #a3342b }
+
+.staff-form button[disabled] { opacity: .55; cursor: not-allowed }
+
 /* ----- ubicación ----- */
 .loc-block { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: stretch }
 
@@ -874,20 +972,6 @@ nav.main .cta { margin-left: 10px }
   position: absolute;
   left: 50%;
   top: -60px;
-/* Honeypot: fuera de pantalla (no display:none, algunos bots lo detectan) */
-.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
-
-.field-error { margin: 0; min-height: 0; font-size: .82rem; color: #a3342b }
-.field-error:empty { display: none }
-
-.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #a3342b }
-
-.form-status { margin: 0; font-size: .9rem; color: var(--bosque) }
-.form-status:empty { display: none }
-.form-status.is-error { color: #a3342b }
-
-.staff-form button[disabled] { opacity: .55; cursor: not-allowed }
-
   transform: translateX(-50%);
   width: 240px;
   opacity: .08;
