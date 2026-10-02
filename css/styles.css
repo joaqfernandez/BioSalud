@@ -874,6 +874,20 @@ nav.main .cta { margin-left: 10px }
   left: 50%;
   top: -60px;
   transform: translateX(-50%);
+/* Honeypot: fuera de pantalla (no display:none, algunos bots lo detectan) */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
+
+.field-error { margin: 0; min-height: 0; font-size: .82rem; color: #a3342b }
+.field-error:empty { display: none }
+
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #a3342b }
+
+.form-status { margin: 0; font-size: .9rem; color: var(--bosque) }
+.form-status:empty { display: none }
+.form-status.is-error { color: #a3342b }
+
+.staff-form button[disabled] { opacity: .55; cursor: not-allowed }
+
   width: 240px;
   opacity: .08;
   color: #fff

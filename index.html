@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.pravatar.cc; frame-src https://www.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>BIOS Salud · Consultorio médico y Espacio BIOS · Godoy Cruz, Mendoza</title>
   <meta name="description"
     content="Consultorio de oncología, ginecología y pediatría en Godoy Cruz, Mendoza. En el mismo lugar alquilamos una sala para talleres, cursos y charlas.">
@@ -422,32 +425,48 @@
             <p>Si querés trabajar con nosotros, dejanos tus datos y contanos un poco de vos. Leemos todos los
               mensajes.</p>
           </div>
-          <form class="staff-form" id="staffForm" novalidate>
+          <form class="staff-form" id="staffForm" method="post" action="#staff" novalidate
+            data-endpoint="" data-mailto="hola@biosalud.com.ar">
+            <!-- Honeypot anti-bots: invisible para personas, los bots suelen completarlo -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="staffWebsite">No completar este campo</label>
+              <input type="text" id="staffWebsite" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="field-row">
               <div class="field">
                 <label for="staffNombre">Nombre <span aria-hidden="true">*</span></label>
-                <input type="text" id="staffNombre" name="nombre" autocomplete="given-name" required>
+                <input type="text" id="staffNombre" name="nombre" autocomplete="given-name" required
+                  minlength="2" maxlength="60" aria-describedby="staffNombreErr">
+                <p class="field-error" id="staffNombreErr" aria-live="polite"></p>
               </div>
               <div class="field">
                 <label for="staffApellido">Apellido <span aria-hidden="true">*</span></label>
-                <input type="text" id="staffApellido" name="apellido" autocomplete="family-name" required>
+                <input type="text" id="staffApellido" name="apellido" autocomplete="family-name" required
+                  minlength="2" maxlength="60" aria-describedby="staffApellidoErr">
+                <p class="field-error" id="staffApellidoErr" aria-live="polite"></p>
               </div>
             </div>
             <div class="field-row">
               <div class="field">
                 <label for="staffEspecialidad">Especialidad <span aria-hidden="true">*</span></label>
                 <input type="text" id="staffEspecialidad" name="especialidad" placeholder="Ej: Ginecología"
-                  required>
+                  required minlength="3" maxlength="80" aria-describedby="staffEspecialidadErr">
+                <p class="field-error" id="staffEspecialidadErr" aria-live="polite"></p>
               </div>
               <div class="field">
                 <label for="staffEmail">Email <span aria-hidden="true">*</span></label>
-                <input type="email" id="staffEmail" name="email" autocomplete="email" required>
+                <input type="email" id="staffEmail" name="email" autocomplete="email" required
+                  maxlength="120" inputmode="email" aria-describedby="staffEmailErr">
+                <p class="field-error" id="staffEmailErr" aria-live="polite"></p>
               </div>
             </div>
             <div class="field">
               <label for="staffMensaje">¿Por qué querés sumarte? <span aria-hidden="true">*</span></label>
-              <textarea id="staffMensaje" name="mensaje" rows="4" required></textarea>
+              <textarea id="staffMensaje" name="mensaje" rows="4" required minlength="20" maxlength="1500"
+                aria-describedby="staffMensajeErr"></textarea>
+              <p class="field-error" id="staffMensajeErr" aria-live="polite"></p>
             </div>
+            <p class="form-status" id="staffStatus" role="status" aria-live="polite"></p>
             <div class="staff-form-foot">
               <span class="req-note">* Campos obligatorios</span>
               <button type="submit" class="btn btn-ghost">Enviar postulación</button>
