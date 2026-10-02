@@ -843,47 +843,98 @@ nav.main .cta { margin-left: 10px }
 }
 
 /* ----- especialidades ----- */
-.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px }
-
-@media(max-width:860px) { .cards { grid-template-columns: repeat(2, 1fr) } }
-@media(max-width:640px) { .cards { grid-template-columns: 1fr } }
-
-.card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 220ms var(--ease-out), box-shadow 220ms ease, border-color 220ms ease;
+/* Especialidades: cartas con foto (hover-reveal). Al pasar el mouse por la
+   grilla, la carta señalada se agranda y las demás se atenúan y desenfocan. */
+.spec-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
 }
+
+@media(max-width:1023px) { .spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media(max-width:600px) { .spec-grid { grid-template-columns: 1fr } }
+
+.spec-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 460px;
+  border-radius: var(--r-lg);
+  background: var(--bosque);
+  box-shadow: 0 1px 2px rgba(22, 48, 44, .06), 0 22px 44px -26px rgba(22, 48, 44, .55);
+  display: flex;
+  align-items: flex-end;
+  transition: transform 500ms var(--ease-out), opacity 500ms var(--ease-out), filter 500ms var(--ease-out), box-shadow 500ms var(--ease-out);
+}
+
+@media(max-width:600px) { .spec-card { min-height: 400px } }
+
+.spec-card img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.82) contrast(1.02);
+  transition: transform 900ms var(--ease-out);
+}
+
+/* Degradado bosque desde abajo para que el texto se lea sobre cualquier foto */
+.spec-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(14, 38, 34, .94) 0%, rgba(20, 56, 50, .72) 38%, rgba(27, 77, 69, .18) 68%, rgba(27, 77, 69, 0) 100%);
+}
+
+.spec-body { width: 100%; padding: 24px 22px 26px; color: #fff }
+
+.spec-note {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .8rem;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #bfe0db;
+}
+
+.spec-note::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sol);
+}
+
+.spec-card h3 { margin-top: 8px; color: #fff; font-size: 1.6rem }
+
+.spec-desc { margin: 10px 0 0; font-size: .98rem; line-height: 1.55; color: rgba(255, 255, 255, .86) }
+
+/* En 4 columnas reservo 5 líneas de descripción para que los títulos queden alineados */
+@media(min-width:1024px) { .spec-desc { min-height: calc(1.55em * 5) } }
 
 @media (hover:hover) and (pointer:fine) {
-  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--teal-14) }
+  .spec-grid:hover .spec-card { transform: scale(.97); opacity: .6; filter: blur(2px) }
+  .spec-grid:hover .spec-card:hover {
+    transform: scale(1.03);
+    opacity: 1;
+    filter: none;
+    box-shadow: 0 1px 2px rgba(22, 48, 44, .06), 0 34px 60px -28px rgba(22, 48, 44, .7);
+  }
+  .spec-card:hover img { transform: scale(1.06) }
 }
 
-.card .ic {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: var(--teal-08);
-  color: var(--teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.card .ic svg { width: 27px; height: 27px }
-
-.card h3 { font-size: 1.4rem; margin-bottom: 10px }
-
-.card p { margin: 0; color: rgba(22, 48, 44, .76); font-size: 1rem }
-
-.card .note {
-  margin-top: 18px;
-  font-size: .9rem;
-  font-weight: 600;
-  color: var(--teal);
+@media (prefers-reduced-motion: reduce) {
+  .spec-card, .spec-card img { transition: opacity 200ms ease }
+  .spec-grid:hover .spec-card, .spec-grid:hover .spec-card:hover, .spec-card:hover img { transform: none; filter: none }
 }
 
 /* ----- valores ----- */
@@ -1437,7 +1488,7 @@ footer {
   * { animation: none !important }
   .reveal { opacity: 1 !important; transform: none !important; transition: none }
   .drops .d { animation: none !important }
-  .btn, .card, .world, .btn-white:hover {
+  .btn, .world, .btn-white:hover {
     transition: background 200ms ease, color 200ms ease, border-color 200ms ease
   }
 }

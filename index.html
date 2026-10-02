@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.pravatar.cc; frame-src https://www.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.pravatar.cc https://images.unsplash.com; frame-src https://www.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>BIOS Salud · Consultorio médico y Espacio BIOS · Godoy Cruz, Mendoza</title>
   <meta name="description"
@@ -349,50 +349,54 @@
           <p class="lead">En todas las consultas nos tomamos el tiempo de escuchar y de explicar. Esto es lo que
             atendemos hoy.</p>
         </div>
-        <div class="cards">
-          <article class="card reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 5.5a4.5 4.5 0 0 0-7 .8 4.5 4.5 0 0 0-7-.8C3 7.5 3.5 11 7 14l5 5 5-5c3.5-3 4-6.5 2-8.5Z" />
-              </svg></div>
-            <h3>Oncología</h3>
-            <p>Te acompañamos durante todo el tratamiento, a vos y a tu familia. Te damos la información clara y a tu
-              ritmo.</p>
-            <div class="note">Contención y seguimiento</div>
-          </article>
-          <article class="card reveal" data-d="1">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M12 3a5 5 0 0 0-3 9c-1 .5-2 1.5-2 3a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3c0-1.5-1-2.5-2-3a5 5 0 0 0-3-9Z" />
-                <path d="M12 12v9" />
-              </svg></div>
-            <h3>Ginecología</h3>
-            <p>Controles de rutina, prevención y consultas. Un lugar donde podés preguntar lo que quieras, sin
-              apuro.</p>
-            <div class="note">Controles y prevención</div>
-          </article>
-          <article class="card reveal" data-d="2">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="9" r="4" />
-                <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
-              </svg></div>
-            <h3>Pediatría</h3>
-            <p>Atención para bebés y chicos, desde el nacimiento. Y una respuesta rápida cuando algo te preocupa.</p>
-            <div class="note">Incluye neonatología</div>
-          </article>
-          <article class="card reveal" data-d="3">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M15.5 8.5 13.7 13.7 8.5 15.5 10.3 10.3 15.5 8.5Z" />
-              </svg></div>
-            <h3>Coaching</h3>
-            <p>Encuentros para ordenar ideas y decidir cómo seguir en una etapa de cambio.</p>
-            <div class="note">Hombres y mujeres desde los 40</div>
-          </article>
-        </div>
+        <ul class="spec-grid">
+          <li class="spec-card reveal">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=700&amp;h=900&amp;fit=crop&amp;q=70"
+              srcset="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=500&amp;h=640&amp;fit=crop&amp;q=70 500w, https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=900&amp;h=1150&amp;fit=crop&amp;q=70 900w"
+              sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" alt="" loading="lazy" decoding="async"
+              style="object-position:45% 25%">
+            <div class="spec-body">
+              <p class="spec-note">Contención y seguimiento</p>
+              <h3>Oncología</h3>
+              <p class="spec-desc">Te acompañamos durante todo el tratamiento, a vos y a tu familia. Te damos la información clara y a tu
+                ritmo.</p>
+            </div>
+          </li>
+          <li class="spec-card reveal" data-d="1">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=700&amp;h=900&amp;fit=crop&amp;q=70"
+              srcset="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&amp;h=640&amp;fit=crop&amp;q=70 500w, https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&amp;h=1150&amp;fit=crop&amp;q=70 900w"
+              sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" alt="" loading="lazy" decoding="async"
+              style="object-position:40% 30%">
+            <div class="spec-body">
+              <p class="spec-note">Controles y prevención</p>
+              <h3>Ginecología</h3>
+              <p class="spec-desc">Controles de rutina, prevención y consultas. Un lugar donde podés preguntar lo que quieras, sin
+                apuro.</p>
+            </div>
+          </li>
+          <li class="spec-card reveal" data-d="2">
+            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=700&amp;h=900&amp;fit=crop&amp;q=70"
+              srcset="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=500&amp;h=640&amp;fit=crop&amp;q=70 500w, https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=900&amp;h=1150&amp;fit=crop&amp;q=70 900w"
+              sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" alt="" loading="lazy" decoding="async"
+              style="object-position:50% 40%">
+            <div class="spec-body">
+              <p class="spec-note">Incluye neonatología</p>
+              <h3>Pediatría</h3>
+              <p class="spec-desc">Atención para bebés y chicos, desde el nacimiento. Y una respuesta rápida cuando algo te preocupa.</p>
+            </div>
+          </li>
+          <li class="spec-card reveal" data-d="3">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=700&amp;h=900&amp;fit=crop&amp;q=70"
+              srcset="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=500&amp;h=640&amp;fit=crop&amp;q=70 500w, https://images.unsplash.com/photo-1511895426328-dc8714191300?w=900&amp;h=1150&amp;fit=crop&amp;q=70 900w"
+              sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" alt="" loading="lazy" decoding="async"
+              style="object-position:55% 60%">
+            <div class="spec-body">
+              <p class="spec-note">Hombres y mujeres desde los 40</p>
+              <h3>Coaching</h3>
+              <p class="spec-desc">Encuentros para ordenar ideas y decidir cómo seguir en una etapa de cambio.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
