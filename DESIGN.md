@@ -183,7 +183,15 @@ Not present in the current single-page build (contact is link-based: WhatsApp, I
 - **Mobile:** links collapse into a rounded frosted-glass panel (12px side insets) sliding down below the capsule (`translateY` + opacity), triggered by a burger icon; each link gets larger tap padding (13px 14px) to stay touch-friendly.
 
 ### Signature Component: The "World" Duo Block
-The `.world.salud` / `.world.espacio` pair (in `#nosotros`) is the site's most important custom component: two large, differently-gradiented cards standing side by side, each carrying a semibold `.tag` label, a Lexend 500 `<h3>`, a leaf-bulleted list, and a CTA pinned to the bottom via `margin-top: auto`. This is the component that visually enacts "two worlds, one roof" — any redesign should preserve the side-by-side, differently-colored, equally-weighted structure rather than collapsing it into a single card or an asymmetric layout.
+The `.world.salud` / `.world.espacio` pair (in `#nosotros`) is the site's most important custom component. It is two equal "gradient cards" side by side, each with:
+
+- a white surface with a hairline border;
+- a brand-colored glow rising from the bottom corners (`.world-glow`): aqua/teal for BIOS Salud, sol/ochre for Espacio BIOS;
+- a pill badge with a colored status dot (the former tag text);
+- an authored SVG illustration top-right: a teal drop with a white medical cross for Salud, and an ochre sun with a white seedling for Espacio;
+- a colored `<h3>` (bosque / deep brown), a leaf-bulleted list, and a text CTA with an arrow pinned to the bottom via `margin-top: auto`.
+
+On hover the card lifts, the glow intensifies, the illustration tilts and the arrow nudges right. Colors are driven per card by `--c1`, `--c2`, `--accent` and `--title`. This is the component that visually enacts "two worlds, one roof". Any redesign should preserve the side-by-side, differently-colored, equally-weighted structure rather than collapsing it into a single card or an asymmetric layout.
 
 ## 6. Do's and Don'ts
 

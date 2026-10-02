@@ -127,10 +127,23 @@
         </div>
         <div class="duo">
           <article class="world salud reveal">
-            <svg class="bgleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
+            <div class="world-glow" aria-hidden="true"></div>
+            <svg class="world-art" viewBox="0 0 160 160" aria-hidden="true">
+              <defs>
+                <linearGradient id="artSaludFill" x1="0" y1="0" x2=".7" y2="1">
+                  <stop offset="0" stop-color="#9fd0ca" />
+                  <stop offset=".45" stop-color="#2E7373" />
+                  <stop offset="1" stop-color="#16403a" />
+                </linearGradient>
+                <filter id="artSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" /></filter>
+              </defs>
+              <ellipse cx="80" cy="150" rx="40" ry="6" fill="#1B4D45" opacity=".22" filter="url(#artSoft)" />
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" transform="translate(8 2) scale(6)" fill="url(#artSaludFill)" />
+              <ellipse cx="62" cy="78" rx="12" ry="22" transform="rotate(24 62 78)" fill="#fff" opacity=".42" filter="url(#artSoft)" />
+              <rect x="70" y="84" width="20" height="52" rx="6" fill="#fff" />
+              <rect x="54" y="100" width="52" height="20" rx="6" fill="#fff" />
             </svg>
-            <span class="tag">Consultorio</span>
+            <span class="badge"><span class="dot" aria-hidden="true"></span>Consultorio</span>
             <h3>BIOS Salud</h3>
             <p>Consultas con especialistas que te explican qué pasa y qué sigue. Podés preguntar todo lo que necesites,
               sin apuro.</p>
@@ -145,13 +158,31 @@
                   <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
                 </svg>Te lo explicamos con palabras simples</li>
             </ul>
-            <div class="go"><a class="btn btn-white" href="#especialidades">Ver especialidades</a></div>
+            <a class="world-cta" href="#especialidades">Ver especialidades
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
           </article>
           <article class="world espacio reveal" data-d="1">
-            <svg class="bgleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
+            <div class="world-glow" aria-hidden="true"></div>
+            <svg class="world-art" viewBox="0 0 160 160" aria-hidden="true">
+              <defs>
+                <radialGradient id="artSolFill" cx=".35" cy=".3" r=".8">
+                  <stop offset="0" stop-color="#F6DAB0" />
+                  <stop offset=".5" stop-color="#D89A4E" />
+                  <stop offset="1" stop-color="#8a5414" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="80" cy="150" rx="44" ry="6" fill="#8a5414" opacity=".22" filter="url(#artSoft)" />
+              <circle cx="80" cy="82" r="56" fill="url(#artSolFill)" />
+              <ellipse cx="60" cy="56" rx="20" ry="12" transform="rotate(-30 60 56)" fill="#fff" opacity=".45" filter="url(#artSoft)" />
+              <path d="M80 126V88" stroke="#fff" stroke-width="5" stroke-linecap="round" />
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" transform="translate(81 98) rotate(52) scale(1.55) translate(-12 -24)" fill="#fff" />
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" transform="translate(79 108) rotate(-52) scale(1.3) translate(-12 -24)" fill="#fff" opacity=".92" />
             </svg>
-            <span class="tag">Sala para actividades</span>
+            <span class="badge"><span class="dot" aria-hidden="true"></span>Sala para actividades</span>
             <h3>Espacio BIOS</h3>
             <p>Una sala tranquila y luminosa que alquilamos para talleres, cursos y charlas. Vos traés la actividad; del
               lugar nos ocupamos nosotros.</p>
@@ -166,7 +197,12 @@
                   <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
                 </svg>Para talleristas y organizadores de grupos</li>
             </ul>
-            <div class="go"><a class="btn btn-white" href="#espacio">Conocé el espacio</a></div>
+            <a class="world-cta" href="#espacio">Conocé el espacio
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
           </article>
         </div>
       </div>

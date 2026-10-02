@@ -500,37 +500,101 @@ nav.main .cta { margin-left: 10px }
 
 @media(max-width:840px) { .duo { grid-template-columns: 1fr } }
 
+/* Cartas con resplandor de color (estilo "gradient card"): fondo claro,
+   brillo de marca desde abajo, badge con punto, ilustración arriba a la
+   derecha y link con flecha. Teal = BIOS Salud, sol = Espacio BIOS. */
 .world {
+  --c1: 111, 168, 163;
+  --c2: 46, 115, 115;
+  --accent: var(--teal);
+  --title: var(--bosque);
   position: relative;
-  border-radius: var(--r-lg);
-  padding: 42px 38px;
-  color: #fff;
+  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 400px;
-  transition: transform 240ms var(--ease-out), box-shadow 240ms ease;
+  min-height: 460px;
+  padding: 36px 36px 30px;
+  border-radius: var(--r-lg);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  color: var(--tinta);
+  transition: transform 280ms var(--ease-out), box-shadow 280ms var(--ease-out), border-color 280ms ease;
 }
 
-.world.salud { background: linear-gradient(158deg, var(--teal), var(--bosque)) }
+.world.espacio {
+  --c1: 216, 154, 78;
+  --c2: 242, 201, 143;
+  --accent: #8a5414;
+  --title: #5c3a10;
+}
 
-.world.espacio { background: linear-gradient(158deg, #cf944a, #9a6a2c) }
+.world-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(95% 62% at 100% 108%, rgba(var(--c1), .42) 0%, rgba(var(--c1), 0) 70%),
+    radial-gradient(70% 48% at -6% 104%, rgba(var(--c2), .26) 0%, rgba(var(--c2), 0) 72%),
+    radial-gradient(60% 40% at 96% -4%, rgba(var(--c2), .12) 0%, rgba(var(--c2), 0) 70%);
+  opacity: .85;
+  transition: opacity 280ms var(--ease-out);
+}
+
+.world-art {
+  position: absolute;
+  top: 24px;
+  right: 22px;
+  width: 128px;
+  height: 128px;
+  pointer-events: none;
+  transition: transform 420ms var(--ease-out);
+}
 
 @media (hover:hover) and (pointer:fine) {
-  .world:hover { transform: translateY(-5px); box-shadow: var(--shadow) }
+  .world:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--c1), .45);
+    box-shadow: 0 1px 2px rgba(22, 48, 44, .04), 0 26px 50px -22px rgba(var(--c2), .45);
+  }
+  .world:hover .world-glow { opacity: 1 }
+  .world:hover .world-art { transform: translateY(-6px) rotate(-5deg) }
+  .world:hover .world-cta .arrow { transform: translateX(4px) }
 }
 
-.world .tag {
-  font-size: .92rem;
+.world .badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .75);
+  font-size: .86rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, .86);
-  display: inline-block;
-  margin-bottom: 18px;
+  color: rgba(22, 48, 44, .78);
 }
 
-.world h3 { color: #fff; font-size: 2.1rem; letter-spacing: -.02em }
+.world .badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(var(--c1));
+  box-shadow: 0 0 0 3px rgba(var(--c1), .22);
+}
 
-.world p { color: rgba(255, 255, 255, .92); margin: 14px 0 0; font-size: 1.04rem }
+.world h3 {
+  margin-top: 40px;
+  color: var(--title);
+  font-size: 2.1rem;
+  letter-spacing: -.02em;
+  max-width: calc(100% - 120px);
+}
+
+.world p { margin: 14px 0 0; font-size: 1.04rem; color: rgba(22, 48, 44, .76); max-width: 46ch }
 
 .world ul { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 11px }
 
@@ -539,21 +603,32 @@ nav.main .cta { margin-left: 10px }
   gap: 11px;
   align-items: flex-start;
   font-size: .98rem;
-  color: rgba(255, 255, 255, .92)
+  color: rgba(22, 48, 44, .84)
 }
 
-.world ul li .leaf { width: 15px; height: 15px; margin-top: 5px; flex: none; color: rgba(255, 255, 255, .85) }
+.world ul li .leaf { width: 15px; height: 15px; margin-top: 5px; flex: none; color: rgb(var(--c1)) }
 
-.world .go { margin-top: auto; padding-top: 28px }
+.world-cta {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 28px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--accent);
+}
 
-.world .bgleaf {
-  position: absolute;
-  right: -34px;
-  bottom: -34px;
-  width: 200px;
-  opacity: .1;
-  color: #fff;
-  pointer-events: none
+.world-cta .arrow { width: 18px; height: 18px; transition: transform 240ms var(--ease-out) }
+
+.world-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px }
+
+@media(max-width:520px) {
+  .world { padding: 28px 24px 24px; min-height: 0 }
+  .world-art { width: 92px; height: 92px; top: 18px; right: 16px }
+  .world h3 { margin-top: 34px; max-width: calc(100% - 84px); font-size: 1.85rem }
 }
 
 /* ----- equipo ----- */
