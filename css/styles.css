@@ -631,6 +631,87 @@ nav.main .cta { margin-left: 10px }
   .world h3 { margin-top: 34px; max-width: calc(100% - 84px); font-size: 1.85rem }
 }
 
+/* ----- testimonios: columnas que se desplazan en loop ----- */
+.t-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-height: 680px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+@media(max-width:1023px) {
+  .t-cols { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .t-col-3 { display: none }
+}
+
+@media(max-width:700px) {
+  .t-cols { grid-template-columns: 1fr; max-height: 560px }
+  .t-col-2 { display: none }
+}
+
+/* Dos copias de la lista: al subir -50% la segunda queda justo donde empezó la
+   primera, así el loop no salta. El padding-bottom iguala el gap entre copias. */
+.t-track {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-bottom: 22px;
+  animation: t-scroll var(--dur, 40s) linear infinite;
+}
+
+/* Se frena al pasar el mouse o al navegar con teclado, para poder leer tranquilo */
+.t-cols:hover .t-track, .t-cols:focus-within .t-track { animation-play-state: paused }
+
+@keyframes t-scroll { to { transform: translateY(-50%) } }
+
+.t-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px }
+
+.t-card {
+  --c: 46, 115, 115;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 30px 30px 26px;
+  box-shadow: 0 1px 2px rgba(22, 48, 44, .04), 0 18px 36px -22px rgba(var(--c), .38);
+}
+
+.t-card.espacio { --c: 168, 106, 31 }
+
+.t-card blockquote {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.6;
+  color: rgba(22, 48, 44, .86);
+}
+
+.t-who { display: flex; align-items: center; gap: 12px; margin-top: 22px }
+
+.t-avatar {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(145deg, var(--aqua), var(--teal));
+}
+
+.t-card.espacio .t-avatar { background: linear-gradient(145deg, #e6b373, var(--sol-deep)) }
+
+.t-who b { display: block; font-weight: 600; color: var(--bosque); line-height: 1.3 }
+
+.t-role { display: block; font-size: .9rem; color: rgba(22, 48, 44, .62); line-height: 1.3 }
+
+@media (prefers-reduced-motion: reduce) {
+  .t-track { animation: none }
+}
+
 /* ----- equipo ----- */
 .team-showcase {
   display: flex;
