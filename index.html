@@ -509,32 +509,80 @@
     </section>
 
     <!-- ===================== ESPACIO BIO ===================== -->
-    <section class="section" id="espacio">
+    <section class="section espacio-x" id="espacio">
+      <div class="ex-light" aria-hidden="true">
+        <span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span>
+      </div>
       <div class="wrap">
-        <div class="espacio-block">
-          <div class="copy reveal">
-            <h2>Una sala para tu taller, curso o charla</h2>
+        <div class="ex-top">
+          <div class="ex-copy reveal">
+            <h2>
+              <span class="sr-only">Una sala para tu taller, curso, charla, clase, meditación o encuentro</span>
+              <span aria-hidden="true">Una sala para tu</span>
+              <span class="ex-rotator" aria-hidden="true"><span class="ex-words"><span>taller</span><span>curso</span><span>charla</span><span>clase</span><span>meditación</span><span>encuentro</span><span>taller</span></span></span>
+            </h2>
             <p class="lead">Alquilamos la sala para actividades que no son consultas médicas: talleres, cursos, charlas y
               encuentros. Es tranquila y está bien ubicada, así que vos solo te ocupás de tu grupo.</p>
-            <div class="chips">
-              <span class="chip">Yoga</span>
-              <span class="chip">Meditación</span>
-              <span class="chip">Cursos</span>
-              <span class="chip">Talleres</span>
-              <span class="chip">Charlas</span>
-              <span class="chip">Encuentros</span>
+            <div class="ex-actions">
+              <a class="btn btn-sol" href="#contacto">Consultá disponibilidad</a>
+              <a class="ex-link" href="https://www.instagram.com/espacio.biossalud/" target="_blank" rel="noopener">Escribinos por Instagram
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></a>
             </div>
-            <a class="btn btn-sol" href="#contacto">Consultá disponibilidad</a>
           </div>
-          <div class="espacio-visual reveal" data-d="1">
-            <svg class="bgleaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" />
+
+          <aside class="ex-card reveal" data-d="1" aria-label="Espacio BIOS">
+            <svg class="ex-sun" viewBox="0 0 160 160" aria-hidden="true">
+              <defs>
+                <radialGradient id="exSunFill" cx=".35" cy=".3" r=".8">
+                  <stop offset="0" stop-color="#F6DAB0" />
+                  <stop offset=".5" stop-color="#D89A4E" />
+                  <stop offset="1" stop-color="#8a5414" />
+                </radialGradient>
+                <filter id="exSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" /></filter>
+              </defs>
+              <ellipse cx="80" cy="150" rx="44" ry="6" fill="#8a5414" opacity=".22" filter="url(#exSoft)" />
+              <circle cx="80" cy="82" r="56" fill="url(#exSunFill)" />
+              <ellipse cx="60" cy="56" rx="20" ry="12" transform="rotate(-30 60 56)" fill="#fff" opacity=".45" filter="url(#exSoft)" />
+              <path d="M80 126V88" stroke="#fff" stroke-width="5" stroke-linecap="round" />
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" transform="translate(81 98) rotate(52) scale(1.55) translate(-12 -24)" fill="#fff" />
+              <path d="M12 2C12 2 4 11 4 16a8 8 0 0 0 16 0C20 11 12 2 12 2Z" transform="translate(79 108) rotate(-52) scale(1.3) translate(-12 -24)" fill="#fff" opacity=".92" />
             </svg>
-            <div class="who">Espacio BIOS</div>
-            <p class="q">Vos traés la actividad. Nosotros, el lugar.</p>
-            <div class="who">Pedro J. Godoy 840, Godoy Cruz</div>
-          </div>
+            <p class="ex-name">Espacio BIOS</p>
+            <p class="ex-quote">Vos traés la actividad. Nosotros, el lugar.</p>
+            <ul class="ex-tags">
+              <li>Yoga</li><li>Meditación</li><li>Cursos</li><li>Talleres</li><li>Charlas</li><li>Encuentros</li>
+            </ul>
+            <p class="ex-addr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>
+              Pedro J. Godoy 840, Godoy Cruz
+            </p>
+          </aside>
         </div>
+
+        <ol class="ex-steps reveal" data-d="2" aria-label="Cómo reservar la sala">
+          <li>
+            <span class="n" aria-hidden="true">1</span>
+            <h3>Contanos tu actividad</h3>
+            <p>Escribinos por WhatsApp o Instagram: qué vas a hacer, para cuántas personas y qué días te sirven.</p>
+          </li>
+          <li>
+            <span class="n" aria-hidden="true">2</span>
+            <h3>Coordinamos día y horario</h3>
+            <p>Te contamos qué disponibilidad tiene la sala y reservamos tu lugar.</p>
+          </li>
+          <li>
+            <span class="n" aria-hidden="true">3</span>
+            <h3>Venís con tu grupo</h3>
+            <p>Vos te ocupás de tu actividad. Del lugar nos ocupamos nosotros.</p>
+          </li>
+        </ol>
       </div>
     </section>
 

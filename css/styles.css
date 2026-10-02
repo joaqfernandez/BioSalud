@@ -905,68 +905,225 @@ nav.main .cta { margin-left: 10px }
 
 .value p { margin: 0; font-size: 1rem; color: rgba(22, 48, 44, .76) }
 
-/* ----- espacio bio ----- */
-.espacio-block {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 48px;
-  align-items: center
+/* ----- espacio bios: "una sala con luz de ventana" ----- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-@media(max-width:900px) { .espacio-block { grid-template-columns: 1fr; gap: 36px } }
-
-.espacio-block h2 { font-size: clamp(2rem, 4vw, 2.8rem) }
-
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 30px }
-
-.chip {
-  font-size: .9rem;
-  background: var(--sol-12);
-  color: var(--sol-deep);
-  padding: 8px 15px;
-  border-radius: 999px;
-  border: 1px solid rgba(216, 154, 78, .28);
-}
-
-.espacio-visual {
-  border-radius: var(--r-lg);
-  padding: 40px;
-  min-height: 360px;
-  background: linear-gradient(158deg, #e8b878, #cf944a);
-  color: #3a2608;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+.espacio-x {
+  --ink: #4a2f0c;
+  --sun: 216, 154, 78;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  isolation: isolate;
+  padding: 120px 0 112px;
+  background:
+    radial-gradient(60% 70% at 100% 0%, rgba(242, 201, 143, .55) 0%, rgba(242, 201, 143, 0) 70%),
+    radial-gradient(50% 50% at 0% 100%, rgba(var(--sun), .12) 0%, rgba(var(--sun), 0) 70%),
+    linear-gradient(180deg, #FDF8F1 0%, #F8EDDD 100%);
 }
 
-.espacio-visual .q {
-  font-family: var(--display);
-  font-size: 1.75rem;
+/* Rayos de luz entrando por una ventana arriba a la derecha */
+.ex-light { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden }
+
+.ex-light .beam {
+  position: absolute;
+  top: -20%;
+  height: 150%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .95) 0%, rgba(255, 250, 240, .35) 45%, rgba(255, 255, 255, 0) 80%);
+  transform: rotate(28deg);
+  transform-origin: top center;
+  filter: blur(10px);
+  opacity: .7;
+}
+.ex-light .b1 { right: 12%; width: 110px }
+.ex-light .b2 { right: 24%; width: 60px; opacity: .55 }
+.ex-light .b3 { right: 31%; width: 160px; opacity: .45 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ex-light .beam { animation: ex-breathe 9s var(--ease-in-out) infinite }
+  .ex-light .b2 { animation-delay: -3s }
+  .ex-light .b3 { animation-delay: -6s }
+}
+
+@keyframes ex-breathe { 0%, 100% { opacity: .45 } 50% { opacity: .85 } }
+
+.ex-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr);
+  gap: 64px;
+  align-items: center;
+}
+
+@media(max-width:940px) { .ex-top { grid-template-columns: 1fr; gap: 44px } }
+
+.ex-copy h2 {
+  color: var(--ink);
+  font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+}
+
+.ex-copy h2 > span[aria-hidden] { display: block }
+
+/* Palabra que rota: una columna de palabras que sube de a una, con pausa en cada una */
+.ex-rotator {
+  display: block;
+  height: 1.1em;
+  overflow: hidden;
+  color: var(--sol-deep);
+}
+
+.ex-words { display: flex; flex-direction: column }
+
+.ex-words > span { display: block; height: 1.1em; line-height: 1.1em }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ex-words { animation: ex-rotate 15s cubic-bezier(.65, 0, .35, 1) infinite }
+}
+
+@keyframes ex-rotate {
+  0.00%, 13.67% { transform: translateY(-0.0em) }
+  16.67%, 30.33% { transform: translateY(-1.1em) }
+  33.33%, 47.00% { transform: translateY(-2.2em) }
+  50.00%, 63.67% { transform: translateY(-3.3em) }
+  66.67%, 80.33% { transform: translateY(-4.4em) }
+  83.33%, 97.00% { transform: translateY(-5.5em) }
+  100% { transform: translateY(-6.6em) }
+}
+
+.ex-copy .lead {
+  margin-top: 26px;
+  max-width: 54ch;
+  font-size: 1.16rem;
+  line-height: 1.6;
+  color: rgba(74, 47, 12, .78);
+}
+
+.ex-actions { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px }
+
+.ex-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 600;
+  color: #8a5414;
+}
+
+.ex-link svg { width: 18px; height: 18px; transition: transform 240ms var(--ease-out) }
+
+@media (hover:hover) { .ex-link:hover svg { transform: translateX(4px) } }
+
+/* Ficha de la sala */
+.ex-card {
+  position: relative;
+  padding: 34px 34px 30px;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, .72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(74, 47, 12, .05),
+    0 30px 60px -30px rgba(var(--sun), .55);
+}
+
+.ex-sun { width: 104px; height: 104px; margin: -6px 0 6px -8px }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ex-sun { animation: ex-float 7s var(--ease-in-out) infinite }
+}
+
+@keyframes ex-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+
+.ex-name { margin: 0; font-weight: 600; font-size: .95rem; color: #8a5414 }
+
+.ex-quote {
+  margin: 10px 0 0;
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
   font-weight: 500;
   line-height: 1.2;
-  max-width: 18ch;
-  position: relative;
-  z-index: 2
+  letter-spacing: -.02em;
+  color: var(--ink);
+  max-width: 16ch;
 }
 
-.espacio-visual .who {
+.ex-tags { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px }
+
+.ex-tags li {
+  font-size: .88rem;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--sol-12);
+  color: #8a5414;
+  border: 1px solid rgba(216, 154, 78, .3);
+}
+
+.ex-addr {
+  margin: 24px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(168, 106, 31, .16);
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-size: .95rem;
-  font-weight: 600;
-  position: relative;
-  z-index: 2
+  font-weight: 500;
+  color: var(--ink);
 }
 
-.espacio-visual .bgleaf {
-  position: absolute;
-  right: -30px;
-  top: -30px;
-  width: 190px;
-  opacity: .18;
-  color: #fff
+.ex-addr svg { width: 18px; height: 18px; color: var(--sol-deep); flex: none }
+
+/* Cómo reservar: tres pasos unidos por una línea punteada */
+.ex-steps {
+  list-style: none;
+  margin: 88px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+  position: relative;
 }
+
+.ex-steps::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: calc((100% - 72px) / 3 - 23px);
+  border-top: 2px dashed rgba(168, 106, 31, .28);
+}
+
+.ex-steps li { position: relative }
+
+.ex-steps .n {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e6b373, var(--sol-deep));
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 0 0 6px #FAF1E4, 0 10px 20px -10px rgba(var(--sun), .8);
+}
+
+.ex-steps h3 { margin-top: 20px; font-size: 1.3rem; color: var(--ink) }
+
+.ex-steps p { margin: 8px 0 0; font-size: 1rem; line-height: 1.6; color: rgba(74, 47, 12, .74); max-width: 34ch }
+
+@media(max-width:760px) {
+  .espacio-x { padding: 92px 0 84px }
+  .ex-steps { grid-template-columns: 1fr; gap: 30px; margin-top: 64px; padding-left: 64px }
+  .ex-steps::before { top: 22px; bottom: 22px; left: 22px; right: auto; border-top: 0; border-left: 2px dashed rgba(168, 106, 31, .28) }
+  .ex-steps .n { position: absolute; left: -64px; top: -4px }
+  .ex-steps h3 { margin-top: 6px }
+}
+
 
 /* ----- agendar ----- */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: s }
