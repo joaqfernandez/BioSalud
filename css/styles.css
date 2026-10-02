@@ -20,11 +20,11 @@
   --shadow: 0 1px 2px rgba(22, 48, 44, .04), 0 18px 40px -18px rgba(22, 48, 44, .22);
 
   /* tipografía */
-  /* Young Serif tiene un solo peso (400). No pedir 500/600: el navegador
-     inventaría una negrita falsa. La jerarquía sale del tamaño. */
-  --serif: 'Young Serif', Georgia, serif;
-  /* Atkinson Hyperlegible: diseñada para lectores con baja visión */
-  --sans: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif;
+  /* Una sola familia para todo el sitio: Lexend, pensada para facilitar la
+     lectura, con el 0 sin raya ni punto. Pesos cargados: 400, 500, 600.
+     Títulos en 500 con tracking apenas cerrado; el cuerpo en 400. */
+  --display: 'Lexend', 'Segoe UI', system-ui, sans-serif;
+  --sans: 'Lexend', 'Segoe UI', system-ui, sans-serif;
 
   /* radios */
   --r: 20px;
@@ -97,8 +97,9 @@ button { font-family: inherit }
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 400;
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -.02em;
   font-synthesis: none;
   line-height: 1.12;
   text-wrap: balance;
@@ -187,7 +188,7 @@ h1, h2, h3, h4 {
 .brand img { width: 34px; height: 34px }
 
 .brand .name {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.18rem;
   color: var(--bosque)
 }
@@ -333,7 +334,7 @@ nav.main .cta { margin-left: 10px }
 
 .section-head { max-width: 760px; margin-bottom: 52px }
 
-.section-head h2 { font-size: clamp(2rem, 4.2vw, 3rem); letter-spacing: -.01em }
+.section-head h2 { font-size: clamp(2rem, 4.2vw, 3rem); letter-spacing: -.02em }
 
 .section-head .lead {
   font-size: 1.2rem;
@@ -375,7 +376,7 @@ nav.main .cta { margin-left: 10px }
   margin-bottom: 18px;
 }
 
-.world h3 { color: #fff; font-size: 2.1rem; letter-spacing: -.01em }
+.world h3 { color: #fff; font-size: 2.1rem; letter-spacing: -.02em }
 
 .world p { color: rgba(255, 255, 255, .92); margin: 14px 0 0; font-size: 1.04rem }
 
@@ -488,7 +489,7 @@ nav.main .cta { margin-left: 10px }
 .team-row.is-active .pill { width: 26px; background: var(--teal) }
 
 .row-head .name {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.35rem;
   white-space: nowrap;
   color: rgba(22, 48, 44, .8);
@@ -634,9 +635,9 @@ nav.main .cta { margin-left: 10px }
 }
 
 .espacio-visual .q {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.75rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   max-width: 18ch;
   position: relative;
@@ -667,7 +668,7 @@ nav.main .cta { margin-left: 10px }
 .step { position: relative; padding-top: 18px }
 
 .step .n {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.3rem;
   color: var(--teal);
   width: 40px;
@@ -737,7 +738,7 @@ nav.main .cta { margin-left: 10px }
 
 .staff-intro .ic svg { width: 100%; height: 100% }
 
-.staff-intro h2 { font-size: 1.6rem; letter-spacing: -.01em }
+.staff-intro h2 { font-size: 1.6rem; letter-spacing: -.02em }
 
 .staff-intro p { margin: 12px 0 0; color: rgba(22, 48, 44, .72) }
 
@@ -812,7 +813,7 @@ nav.main .cta { margin-left: 10px }
 
 .loc-info .pin .addr b {
   display: block;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.3rem;
   color: var(--bosque)
 }
@@ -873,7 +874,6 @@ nav.main .cta { margin-left: 10px }
   position: absolute;
   left: 50%;
   top: -60px;
-  transform: translateX(-50%);
 /* Honeypot: fuera de pantalla (no display:none, algunos bots lo detectan) */
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
 
@@ -888,6 +888,7 @@ nav.main .cta { margin-left: 10px }
 
 .staff-form button[disabled] { opacity: .55; cursor: not-allowed }
 
+  transform: translateX(-50%);
   width: 240px;
   opacity: .08;
   color: #fff
@@ -917,7 +918,7 @@ footer {
 
 .foot-brand img { width: 38px; height: 38px }
 
-.foot-brand .name { font-family: var(--serif); font-size: 1.3rem; color: #fff }
+.foot-brand .name { font-family: var(--display); font-size: 1.3rem; color: #fff }
 
 .foot-col h5 {
   font-size: .95rem;

@@ -18,7 +18,7 @@ Calm, trustworthy, warm. Voice is Argentine voseo, direct and close ("Agendá", 
 
 ## Anti-references
 
-Sterile, clinical hospital-site aesthetics (cold whites, bureaucratic layouts, impersonal stock imagery) — the brand's warmth (teal/bosque + ochre "sol" accent, Young Serif display) exists specifically to counter that feel. Also avoid generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon+heading+text card grids, gradient text, tiny uppercase eyebrows stacked above every section) — the site already had per-section eyebrow kickers removed in favor of a quieter section rhythm; keep that direction rather than reintroducing the pattern.
+Sterile, clinical hospital-site aesthetics (cold whites, bureaucratic layouts, impersonal stock imagery) — the brand's warmth (teal/bosque + ochre "sol" accent, unified Lexend typography) exists specifically to counter that feel. Also avoid generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon+heading+text card grids, gradient text, tiny uppercase eyebrows stacked above every section) — the site already had per-section eyebrow kickers removed in favor of a quieter section rhythm; keep that direction rather than reintroducing the pattern.
 
 ## Design Principles
 

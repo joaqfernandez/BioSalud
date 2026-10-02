@@ -12,29 +12,29 @@ colors:
   tinta: "#16302C"
 typography:
   display:
-    fontFamily: "Young Serif, Georgia, serif"
+    fontFamily: "Lexend, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(2.4rem, 5.6vw, 4.4rem)"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.08
-    letterSpacing: "-0.01em"
+    letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Young Serif, Georgia, serif"
+    fontFamily: "Lexend, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(2rem, 4.2vw, 3rem)"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.12
-    letterSpacing: "-0.01em"
+    letterSpacing: "-0.02em"
   title:
-    fontFamily: "Young Serif, Georgia, serif"
+    fontFamily: "Lexend, Segoe UI, system-ui, sans-serif"
     fontSize: "1.4rem"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.12
   body:
-    fontFamily: "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Lexend, Segoe UI, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
   label:
-    fontFamily: "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Lexend, Segoe UI, system-ui, sans-serif"
     fontSize: "0.9rem"
     fontWeight: 600
 rounded:
@@ -94,7 +94,7 @@ components:
 
 **Creative North Star: "Cuidar y Cultivar"**
 
-The tagline *"Cuidar la vida, cultivar comunidad"* is the literal design brief. Two brands share one visual language: **BIOS Salud** (the clinical practice — teal, bosque, the leaf-mark) tends; **Espacio BIOS** (the community room — sol ochre) cultivates. Every recurring leaf-and-droplet glyph is the bridge between the two: a small piece of botanical calm stitched into an otherwise clinical-adjacent product, so the site never reads as a sterile hospital brochure. Young Serif, a sturdy old-style serif, carries the "tending" half of the metaphor in headlines; Atkinson Hyperlegible Next carries the plain-spoken, no-jargon voice in body copy and small labels.
+The tagline *"Cuidar la vida, cultivar comunidad"* is the literal design brief. Two brands share one visual language: **BIOS Salud** (the clinical practice — teal, bosque, the leaf-mark) tends; **Espacio BIOS** (the community room — sol ochre) cultivates. Every recurring leaf-and-droplet glyph is the bridge between the two: a small piece of botanical calm stitched into an otherwise clinical-adjacent product, so the site never reads as a sterile hospital brochure. A single family, Lexend, carries every role: medium-weight headlines with slightly tightened tracking, regular body copy, and semibold labels. One voice, plain-spoken and easy to read, for the whole page.
 
 This system explicitly rejects sterile clinical-institution aesthetics (cold whites, bureaucratic layout, stock-photo impersonality) and generic AI-generated SaaS landing-page scaffolding (hero-metric blocks, identical icon-card grids, gradient text, stacked uppercase eyebrows on every section). Calm is conveyed through soft ambient shadows, generous rounded geometry, and restrained motion — never through hype, urgency, or manufactured scarcity.
 
@@ -127,22 +127,21 @@ A two-brand palette built on one deep teal-green family (BIOS Salud) plus one wa
 
 ## 3. Typography
 
-**Display Font:** Young Serif (Georgia fallback). One weight: 400.
-**Body & Label Font:** Atkinson Hyperlegible Next (Segoe UI, system-ui fallback).
+**Font (all roles):** Lexend (Segoe UI, system-ui fallback). Weights loaded: 400, 500, 600.
 
-**Character:** Young Serif is a sturdy, low-contrast old-style serif with a slightly hand-cut warmth. It reads like a well-printed patient leaflet, not a magazine cover. Atkinson Hyperlegible Next was designed by the Braille Institute for low-vision readers. Its distinct letterforms (including the slashed zero) suit an audience that skews older or arrives anxious. Serif + grotesque is a contrast-axis pairing. There is no monospace: mono labels read as tech costume on a medical site.
+**Character:** Lexend was designed to reduce visual stress and improve reading fluency. Its open, slightly wide letterforms suit an audience that skews older or arrives anxious. The zero is a plain oval with no slash or dot; this was a client request, and it also keeps numbers in addresses and phone numbers looking like ordinary print. The site deliberately uses one unified family: hierarchy comes from size and weight, not from pairing faces. There is no monospace: mono labels read as tech costume on a medical site.
 
 ### Hierarchy
 - **Display** (400, `clamp(2.4rem, 5.6vw, 4.4rem)`, line-height 1.08, letter-spacing -0.01em): hero `<h1>` only.
 - **Headline** (400, `clamp(2rem, 4.2vw, 3rem)`, line-height 1.12): section `<h2>`.
 - **Title** (400, 1.25–2.1rem): card, team and world-block headings.
 - **Body** (400, 1.0625rem, line-height 1.65): all prose; lead paragraphs 1.2rem. Measure capped around 65–75ch.
-- **Label** (Atkinson 600, ~0.9rem, sentence case, no tracking): tags, notes, footer column headers, badges.
+- **Label** (Lexend 600, ~0.9rem, sentence case, no tracking): tags, notes, footer column headers, badges.
 
 ### Named Rules
-**The Single-Weight Serif Rule.** Young Serif ships one weight. Headings use 400 with `font-synthesis: none`; hierarchy comes from size, never from bold. Asking for 500/600 would make the browser fake a bold.
+**The One-Family Rule.** Every role uses Lexend. Do not reintroduce a second face, and do not pick any font whose zero has a slash or a dot. Only 400/500/600 are loaded; anything heavier (including default `<b>`) resolves to 600, so do not request 700+.
 
-**The No-Costume Rule.** No monospace, no all-caps tracked labels. Small labels are sentence-case Atkinson semibold in teal.
+**The No-Costume Rule.** No monospace, no all-caps tracked labels. Small labels are sentence-case Lexend semibold in teal.
 
 ## 4. Elevation
 
@@ -180,25 +179,25 @@ Not present in the current single-page build (contact is link-based: WhatsApp, I
 
 ### Navigation
 - **Style:** sticky topbar, translucent bone background (`rgba(251,252,251,.78)`) with `backdrop-filter: blur(14px) saturate(1.4)`, border-bottom fades in only after scroll (`.scrolled`).
-- **Typography:** Atkinson Hyperlegible Next, 0.92rem links at 0.78 opacity resting, 1.0 on hover/active with a `--teal-08` pill background.
+- **Typography:** Lexend, 0.92rem links at 0.78 opacity resting, 1.0 on hover/active with a `--teal-08` pill background.
 - **Mobile:** links collapse into a full-width dropdown panel sliding down from the topbar (`translateY` + opacity), triggered by a burger icon; each link gets larger tap padding (13px 14px) to stay touch-friendly.
 
 ### Signature Component: The "World" Duo Block
-The `.world.salud` / `.world.espacio` pair (in `#nosotros`) is the site's most important custom component: two large, differently-gradiented cards standing side by side, each carrying a semibold `.tag` label, a Young Serif `<h3>`, a leaf-bulleted list, and a CTA pinned to the bottom via `margin-top: auto`. This is the component that visually enacts "two worlds, one roof" — any redesign should preserve the side-by-side, differently-colored, equally-weighted structure rather than collapsing it into a single card or an asymmetric layout.
+The `.world.salud` / `.world.espacio` pair (in `#nosotros`) is the site's most important custom component: two large, differently-gradiented cards standing side by side, each carrying a semibold `.tag` label, a Lexend 500 `<h3>`, a leaf-bulleted list, and a CTA pinned to the bottom via `margin-top: auto`. This is the component that visually enacts "two worlds, one roof" — any redesign should preserve the side-by-side, differently-colored, equally-weighted structure rather than collapsing it into a single card or an asymmetric layout.
 
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep the body background a true near-white (`#FBFCFB`) — warmth comes from teal/ochre accents and Young Serif typography, never from a tinted cream/sand body.
+- **Do** keep the body background a true near-white (`#FBFCFB`) — warmth comes from teal/ochre accents and calm, rounded Lexend typography, never from a tinted cream/sand body.
 - **Do** use fully rounded pill buttons (999px) and generously rounded cards (20–28px) everywhere; soft-confident geometry is the point.
 - **Do** keep shadows ambient and hover-triggered (`--shadow-sm` → `--shadow` + lift), never a heavy static drop shadow.
-- **Do** set small labels in sentence-case Atkinson semibold; no monospace, no tracked uppercase.
+- **Do** set small labels in sentence-case Lexend semibold; no monospace, no tracked uppercase.
 - **Do** keep teal/bosque gradients on BIOS Salud (medical) surfaces and ochre gradients on Espacio BIOS (community) surfaces, kept visually distinct.
 
 ### Don't:
-- **Don't** use sterile, cold-white, bureaucratic hospital-site styling — the leaf motif, warm serif, and soft shadows exist specifically to avoid that.
+- **Don't** use sterile, cold-white, bureaucratic hospital-site styling — the leaf motif, warm palette, and soft shadows exist specifically to avoid that.
 - **Don't** reintroduce a tiny uppercase tracked eyebrow above every section — they were deliberately removed from `#nosotros`, `#especialidades`, `#valores`, `#espacio`, `#agendar`, and `#ubicacion` in favor of quieter section rhythm; don't add them back as default scaffolding.
 - **Don't** use gradient text, identical icon-card grids, hero-metric-tile blocks, or other generic AI-SaaS landing-page scaffolding.
 - **Don't** use `border-left`/`border-right` colored stripes as an accent on cards or list items.
-- **Don't** request bold on Young Serif; it has one weight and hierarchy comes from size.
+- **Don't** add a second font family or one with a slashed or dotted zero.
 - **Don't** blend the teal and ochre gradient families on the same element — it erases the two-brands structure.
