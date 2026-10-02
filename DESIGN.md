@@ -178,9 +178,9 @@ Soft and ambient by design — shadows exist to make white cards and gradient bl
 Not present in the current single-page build (contact is link-based: WhatsApp, Instagram, email). If a booking form is added, it should inherit the same rounded/soft-shadow language as cards rather than sharp-edged form defaults.
 
 ### Navigation
-- **Style:** sticky topbar, translucent bone background (`rgba(251,252,251,.78)`) with `backdrop-filter: blur(14px) saturate(1.4)`, border-bottom fades in only after scroll (`.scrolled`).
+- **Style:** floating liquid-glass capsule (`position: fixed`, 12px from the top, pill radius, 64px tall) over the content. It uses `backdrop-filter: blur() saturate(1.8)`, a bright inset top rim, and a soft-light specular highlight (`::before`). `main.js` drives `--p` (0→1 over the first 260px of scroll), which lowers the tint alpha and the blur so more of the background shows through as you scroll. While the bar sits over the hero (`.on-dark`), the glass tints bosque and the text, logo and links switch to white, with a white CTA. Over light sections the glass is bone-tinted with bosque text. Without backdrop-filter support, the glass falls back to near-opaque.
 - **Typography:** Lexend, 0.92rem links at 0.78 opacity resting, 1.0 on hover/active with a `--teal-08` pill background.
-- **Mobile:** links collapse into a full-width dropdown panel sliding down from the topbar (`translateY` + opacity), triggered by a burger icon; each link gets larger tap padding (13px 14px) to stay touch-friendly.
+- **Mobile:** links collapse into a rounded frosted-glass panel (12px side insets) sliding down below the capsule (`translateY` + opacity), triggered by a burger icon; each link gets larger tap padding (13px 14px) to stay touch-friendly.
 
 ### Signature Component: The "World" Duo Block
 The `.world.salud` / `.world.espacio` pair (in `#nosotros`) is the site's most important custom component: two large, differently-gradiented cards standing side by side, each carrying a semibold `.tag` label, a Lexend 500 `<h3>`, a leaf-bulleted list, and a CTA pinned to the bottom via `margin-top: auto`. This is the component that visually enacts "two worlds, one roof" — any redesign should preserve the side-by-side, differently-colored, equally-weighted structure rather than collapsing it into a single card or an asymmetric layout.

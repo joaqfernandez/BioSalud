@@ -2,10 +2,25 @@
   // Año dinámico
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Topbar: borde al hacer scroll
+  // Topbar liquid glass: --p (0→1) vuelve el vidrio más transparente al bajar,
+  // y .on-dark lo tiñe de bosque mientras pasa por encima del hero.
   var topbar = document.getElementById('topbar');
-  var onScroll = function () { topbar.classList.toggle('scrolled', window.scrollY > 8); };
-  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  var heroEl = document.querySelector('.hero');
+  var ticking = false;
+  var paintTopbar = function () {
+    ticking = false;
+    var p = Math.min(window.scrollY / 260, 1);
+    topbar.style.setProperty('--p', p.toFixed(3));
+    var mid = topbar.getBoundingClientRect();
+    mid = mid.top + mid.height / 2;
+    topbar.classList.toggle('on-dark', !!heroEl && heroEl.getBoundingClientRect().bottom > mid);
+  };
+  var onScroll = function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(paintTopbar); }
+  };
+  paintTopbar();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
 
   // Menú móvil
   var burger = document.getElementById('burger');
