@@ -327,11 +327,13 @@ nav.main .cta { margin-left: 10px }
   overflow: hidden;
   color: #eaf4f2;
   background: radial-gradient(125% 95% at 82% -12%, #357f7f 0%, var(--teal) 40%, var(--bosque) 100%);
-  padding: 110px 0 96px;
+  padding: 210px 0 40px;
   min-height: max(600px, 100svh);
   display: flex;
   align-items: center;
 }
+
+@media(max-width:640px) { .hero { padding: 150px 0 48px } }
 
 /* Grilla de puntos estática */
 .hero .dot-grid {
