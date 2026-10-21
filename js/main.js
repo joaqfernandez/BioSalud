@@ -71,6 +71,36 @@
     });
   }
 
+  // Agendar: el filtro por especialidad resalta a quién escribirle (no oculta a nadie)
+  var bookPanel = document.getElementById('bookPanel');
+  if (bookPanel) {
+    var filterBtns = Array.prototype.slice.call(bookPanel.querySelectorAll('.book-filter'));
+    var bookRows = Array.prototype.slice.call(bookPanel.querySelectorAll('.book-row'));
+    var bookStatus = document.getElementById('bookStatus');
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        var all = f === 'todas';
+        var count = 0;
+        filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        bookRows.forEach(function (row) {
+          var match = all || row.getAttribute('data-esp').split(' ').indexOf(f) !== -1;
+          if (match) count++;
+          row.classList.toggle('is-match', !all && match);
+          row.classList.toggle('is-dimmed', !match);
+        });
+        // En pantallas angostas la lista queda lejos de los filtros: acercamos la primera coincidencia
+        if (!all && window.matchMedia('(max-width: 960px)').matches) {
+          var first = bookRows.filter(function (r) { return r.classList.contains('is-match'); })[0];
+          var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (first) first.scrollIntoView({ block: 'nearest', behavior: calm ? 'auto' : 'smooth' });
+        }
+        bookStatus.textContent = all ? 'Mostrando todos los profesionales.' :
+          (count === 1 ? '1 profesional atiende ' : count + ' profesionales atienden ') + btn.textContent + '.';
+      });
+    });
+  }
+
   // Formulario "Sumate al staff": validación, saneamiento y anti-spam.
   // OJO: todo esto corre en el navegador y se puede saltear. El backend que
   // reciba los datos (data-endpoint) tiene que volver a validar todo.
