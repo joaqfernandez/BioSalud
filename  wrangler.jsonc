@@ -1,0 +1,9 @@
+// wrangler.jsonc
+{
+    "name": "biosalud", // igual al "Project name" de la pantalla
+    "compatibility_date": "2026-10-01",
+    "assets": {
+        "directory": "./dist", // carpeta que genera tu build
+        "not_found_handling": "404-page" // usá "single-page-application" si es una SPA (React/Vue con router)
+    }
+}
