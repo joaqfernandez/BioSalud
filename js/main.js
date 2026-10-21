@@ -225,6 +225,90 @@
     });
   }
 
+  // Ubicación: resalta el día de hoy y dice si está abierto, siempre con la
+  // hora de Mendoza (aunque quien mire esté en otro huso). Los horarios salen
+  // de los data-* de cada fila, así que se cambian sólo en el HTML.
+  var hoursList = document.getElementById('locHours');
+  var locStatus = document.getElementById('locStatus');
+  if (hoursList && locStatus) {
+    var DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    var toMin = function (hhmm) { var p = hhmm.split(':'); return +p[0] * 60 + +p[1]; };
+    var rows = Array.prototype.slice.call(hoursList.querySelectorAll('li[data-days]'));
+    var slotFor = function (day) {
+      for (var i = 0; i < rows.length; i++) {
+        var days = rows[i].getAttribute('data-days').split(',').map(Number);
+        if (days.indexOf(day) !== -1) return rows[i];
+      }
+      return null;
+    };
+    var mendozaNow = function () {
+      try {
+        var parts = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Argentina/Mendoza', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+        }).formatToParts(new Date());
+        var get = function (t) { return parts.filter(function (x) { return x.type === t; })[0].value; };
+        return { day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday')), min: +get('hour') * 60 + +get('minute') };
+      } catch (err) { return null; }
+    };
+    var paintHours = function () {
+      var now = mendozaNow();
+      if (!now || now.day < 0) return;
+      rows.forEach(function (r) {
+        r.classList.remove('is-today');
+        var tag = r.querySelector('.today-tag'); if (tag) tag.remove();
+      });
+      var today = slotFor(now.day);
+      if (today) {
+        today.classList.add('is-today');
+        var t = document.createElement('span');
+        t.className = 'today-tag'; t.textContent = 'Hoy';
+        today.firstElementChild.appendChild(t);
+      }
+      var open = today && today.dataset.open && now.min >= toMin(today.dataset.open) && now.min < toMin(today.dataset.close);
+      var text;
+      if (open) {
+        text = 'Abierto ahora · hasta las ' + today.dataset.close;
+      } else {
+        // Próxima apertura: hoy más tarde o alguno de los próximos días
+        for (var k = 0; k < 7; k++) {
+          var d = (now.day + k) % 7, slot = slotFor(d);
+          if (!slot || !slot.dataset.open) continue;
+          if (k === 0 && now.min >= toMin(slot.dataset.open)) continue;
+          var when = k === 0 ? 'hoy' : k === 1 ? 'mañana' : 'el ' + DAY_NAMES[d];
+          text = 'Cerrado ahora · abrimos ' + when + ' a las ' + slot.dataset.open;
+          break;
+        }
+      }
+      if (!text) return;
+      locStatus.querySelector('.txt').textContent = text;
+      locStatus.classList.toggle('is-open', !!open);
+      locStatus.hidden = false;
+    };
+    paintHours();
+    setInterval(paintHours, 60 * 1000);
+  }
+
+  // Copiar dirección (sólo si el navegador lo permite)
+  var copyBtn = document.getElementById('copyAddr');
+  if (copyBtn && navigator.clipboard && window.isSecureContext) {
+    var copyLabel = copyBtn.querySelector('.label');
+    var copyMsg = document.getElementById('copyMsg');
+    var copyTimer = null;
+    copyBtn.hidden = false;
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(copyBtn.getAttribute('data-addr')).then(function () {
+        copyLabel.textContent = 'Dirección copiada';
+        copyMsg.textContent = 'Dirección copiada al portapapeles';
+      }, function () {
+        copyLabel.textContent = 'No se pudo copiar';
+        copyMsg.textContent = 'No se pudo copiar la dirección';
+      }).then(function () {
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(function () { copyLabel.textContent = 'Copiar dirección'; copyMsg.textContent = ''; }, 2400);
+      });
+    });
+  }
+
   // Scroll-spy en la nav
   var links = {};
   document.querySelectorAll('nav.main a.link').forEach(function (l) {

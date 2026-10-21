@@ -728,7 +728,7 @@ nav.main .cta { margin-left: 10px }
   .team-showcase { flex-direction: row; gap: 108px }
 }
 
-/* Grilla de fotos: 6 fotos en una grilla de 5 col × 6 filas, con las filas
+/* Grilla de fotos: 5 fotos en una grilla de 5 col × 6 filas, con las filas
    alternando su desplazamiento (izq, centro-der, izq) para el efecto escalonado */
 .team-photos {
   display: grid;
@@ -749,7 +749,6 @@ nav.main .cta { margin-left: 10px }
 .team-photo-3 { grid-column: 2 / 4; grid-row: 3 / 5 }
 .team-photo-4 { grid-column: 4 / 6; grid-row: 3 / 5 }
 .team-photo-5 { grid-column: 1 / 3; grid-row: 5 / 7 }
-.team-photo-6 { grid-column: 3 / 5; grid-row: 5 / 7 }
 
 .team-photo {
   width: 100%; height: 100%;
@@ -945,24 +944,160 @@ nav.main .cta { margin-left: 10px }
   .spec-grid:hover .spec-card, .spec-grid:hover .spec-card:hover, .spec-card:hover img { transform: none; filter: none }
 }
 
-/* ----- valores ----- */
+/* ----- valores: un tallo que crece -----
+   Una línea orgánica une los cuatro valores como un tallo; cada nudo tiene un
+   brote que crece de uno a otro. El último (Aprendizaje) es de Espacio BIOS,
+   por eso su brote es sol: los dos mundos en el mismo tallo. */
 .values { background: var(--niebla) }
 
-.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 14px }
+.values .section-head { margin-bottom: 44px }
 
-@media(max-width:840px) { .values-grid { grid-template-columns: 1fr 1fr } }
+.vstem { --gap: 28px; --node: 58px; position: relative }
 
-@media(max-width:520px) { .values-grid { grid-template-columns: 1fr } }
+.vstem-line {
+  position: absolute;
+  top: calc(var(--node) / 2 - 20px);
+  left: calc(var(--node) / 2);
+  width: calc(100% + var(--gap));
+  height: 40px;
+  overflow: visible;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent 96%);
+  mask-image: linear-gradient(90deg, #000 78%, transparent 96%);
+}
 
-.value { display: flex; flex-direction: column; gap: 10px }
+.vstem-line path {
+  fill: none;
+  stroke: var(--teal);
+  stroke-opacity: .45;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
 
-.value .ic { width: 40px; height: 40px; color: var(--teal) }
+.values-grid {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap)
+}
 
-.value .ic svg { width: 100%; height: 100% }
+.value { display: flex; flex-direction: column; align-items: flex-start }
 
-.value h3 { font-size: 1.25rem; color: var(--bosque) }
+.value .node {
+  --leaf: var(--teal);
+  --stalk: var(--bosque);
+  /* El brote crece de un valor al siguiente */
+  --grow: calc(.7 + var(--i, 0) * .16);
+  position: relative;
+  width: var(--node);
+  height: var(--node);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
 
-.value p { margin: 0; font-size: 1rem; color: rgba(22, 48, 44, .76) }
+.value .node svg {
+  width: 36px;
+  height: 36px;
+  overflow: visible;
+  transform: scale(var(--grow));
+  transform-origin: 50% 92%;
+}
+
+.value .node .stalk { fill: none; stroke: var(--stalk); stroke-width: 1.8; stroke-linecap: round }
+.value .node .leaf-r { fill: var(--leaf) }
+.value .node .leaf-l { fill: var(--leaf); opacity: .62 }
+
+.value.is-espacio .node {
+  --leaf: var(--sol);
+  --stalk: var(--sol-deep);
+  background: #fff8ef;
+  border-color: rgba(216, 154, 78, .35);
+}
+
+.value h3 {
+  margin-top: 26px;
+  font-size: clamp(1.35rem, 1.9vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  color: var(--bosque)
+}
+
+.value.is-espacio h3 { color: #5c3a10 }
+
+.value p {
+  margin: 10px 0 0;
+  max-width: 28ch;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: rgba(22, 48, 44, .76)
+}
+
+/* El tallo se dibuja y los brotes asoman a su paso. Visible por defecto: sólo
+   se esconde si el JS marcó la sección como pendiente de revelar. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .vstem:not(.in) .vstem-line path { stroke-dashoffset: 1 }
+  .js-reveal .vstem:not(.in) .node svg { transform: scale(0); }
+
+  .vstem .vstem-line path { transition: stroke-dashoffset 1600ms var(--ease-out) 150ms }
+
+  .vstem .node svg {
+    transition: transform 700ms cubic-bezier(.34, 1.4, .64, 1);
+    transition-delay: calc(250ms + var(--i, 0) * 330ms)
+  }
+
+  @media (hover:hover) and (pointer:fine) {
+    .value:hover .node svg .leaf-r { transform: rotate(-7deg) }
+    .value:hover .node svg .leaf-l { transform: rotate(6deg) }
+  }
+
+  .value .node .leaf-r, .value .node .leaf-l {
+    transform-box: fill-box;
+    transition: transform 500ms var(--ease-out)
+  }
+  .value .node .leaf-r { transform-origin: 0% 100% }
+  .value .node .leaf-l { transform-origin: 100% 100% }
+}
+
+/* Celular y tablet: el tallo pasa a ser vertical, a la izquierda */
+@media(max-width:840px) {
+  .vstem { --gap: 34px }
+  .vstem-line { display: none }
+
+  .values-grid { grid-template-columns: 1fr }
+
+  .values-grid::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--node) / 2 - 1px);
+    top: calc(var(--node) / 2);
+    bottom: 40px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(var(--teal), rgba(46, 115, 115, 0));
+    opacity: .4;
+  }
+
+  .value {
+    display: grid;
+    grid-template-columns: var(--node) 1fr;
+    column-gap: 20px;
+    align-items: start
+  }
+
+  .value .node { grid-row: span 2 }
+  .value h3 { margin-top: 12px }
+  .value p { max-width: 40ch }
+}
 
 /* ----- espacio bios: "una sala con luz de ventana" ----- */
 .sr-only {
@@ -1326,61 +1461,264 @@ nav.main .cta { margin-left: 10px }
 
 .staff-form button[disabled] { opacity: .55; cursor: not-allowed }
 
-/* ----- ubicación ----- */
-.loc-block { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: stretch }
+/* ----- ubicación -----
+   La gota de la marca hace de pin. La dirección es una sola puerta para los
+   dos mundos: los puntos teal (consultorio) y sol (Espacio BIOS) lo dicen. */
+.loc { overflow: hidden }
 
-@media(max-width:900px) { .loc-block { grid-template-columns: 1fr } }
+/* Grilla de puntos del hero, apenas visible detrás del mapa */
+.loc-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(46, 115, 115, .2) 1.1px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 46% 60% at 74% 52%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 46% 60% at 74% 52%, #000 0%, transparent 100%);
+}
 
-.loc-info .pin { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 26px }
+.loc .wrap { position: relative }
 
-.loc-info .pin .ic {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--teal-08);
-  color: var(--teal);
+.loc-block {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 56px;
+  align-items: stretch
+}
+
+.loc-info .section-head { margin-bottom: 36px }
+
+.loc-addr { display: flex; gap: 18px; align-items: center }
+
+.loc-drop { width: 52px; height: 65px; flex: none; overflow: visible }
+
+.loc-street {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--bosque);
+}
+
+.loc-city { margin: 6px 0 0; color: rgba(22, 48, 44, .68); font-size: 1rem }
+
+/* La gota cae y se asienta cuando la sección entra en pantalla */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .loc-addr .loc-drop-body { transform-box: fill-box; transform-origin: 50% 100% }
+  .js-reveal .loc-addr.in .loc-drop-body { animation: loc-drop-in 900ms var(--ease-out) 120ms both }
+  .js-reveal .loc-addr.in .loc-drop-shadow {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: loc-shadow-in 900ms var(--ease-out) 120ms both
+  }
+}
+
+@keyframes loc-drop-in {
+  0% { transform: translateY(-22px); opacity: 0 }
+  55% { transform: translateY(0) scale(1.04, .95); opacity: 1 }
+  100% { transform: none }
+}
+
+@keyframes loc-shadow-in {
+  0% { transform: scale(.4); opacity: 0 }
+  100% { transform: none; opacity: .2 }
+}
+
+.loc-worlds {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px
+}
+
+.loc-worlds li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: .88rem;
+  font-weight: 600;
+  color: rgba(22, 48, 44, .8);
+}
+
+.loc-worlds .dot { width: 8px; height: 8px; border-radius: 50% }
+.loc-worlds .is-salud .dot { background: var(--teal); box-shadow: 0 0 0 3px rgba(46, 115, 115, .2) }
+.loc-worlds .is-espacio .dot { background: var(--sol); box-shadow: 0 0 0 3px rgba(216, 154, 78, .26) }
+
+.loc-hours {
+  margin-top: 32px;
+  padding: 20px 24px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+}
+
+.loc-hours-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex: none
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px
 }
 
-.loc-info .pin .ic svg { width: 24px; height: 24px }
+.loc-hours-head h3 { margin: 0; font-size: 1.1rem; font-weight: 600; color: var(--bosque) }
 
-.loc-info .pin .addr b {
-  display: block;
-  font-family: var(--display);
-  font-size: 1.3rem;
-  color: var(--bosque)
+.loc-status {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: rgba(22, 48, 44, .7)
 }
 
-.loc-info .pin .addr span { color: rgba(22, 48, 44, .66); font-size: .98rem }
+.loc-status .dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #93a5a1 }
+.loc-status.is-open { color: var(--teal) }
+.loc-status.is-open .dot { background: var(--teal) }
 
-.hours { list-style: none; padding: 0; margin: 0 0 28px; border-top: 1px solid var(--line) }
+@media (prefers-reduced-motion: no-preference) {
+  .loc-status.is-open .dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: loc-pulse 2.4s var(--ease-out) infinite
+  }
+}
+
+@keyframes loc-pulse {
+  from { transform: scale(1); opacity: .5 }
+  to { transform: scale(3); opacity: 0 }
+}
+
+.hours { list-style: none; padding: 0; margin: 0 }
 
 .hours li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   padding: 13px 0;
   border-bottom: 1px solid var(--line);
   font-size: .98rem
 }
 
-.hours li span:first-child { color: var(--bosque); font-weight: 500 }
+.hours li:last-child { border-bottom: 0 }
 
-.hours li span:last-child { color: rgba(22, 48, 44, .68); font-variant-numeric: tabular-nums }
+.hours li > span:first-child { color: var(--bosque); font-weight: 500 }
+
+.hours li > span:last-child { color: rgba(22, 48, 44, .7); font-variant-numeric: tabular-nums }
+
+/* El día de hoy se resalta como una pastilla teal suave */
+.hours li.is-today {
+  margin: 0 -12px;
+  padding: 13px 12px;
+  border-radius: 12px;
+  border-bottom-color: transparent;
+  background: var(--teal-08)
+}
+
+.hours li.is-today > span:last-child { color: var(--teal); font-weight: 600 }
+
+.hours .today-tag {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-size: .74rem;
+  font-weight: 600;
+  vertical-align: 2px
+}
+
+.loc-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px }
+
+/* Mapa enmarcado como una foto: borde blanco, esquinas concéntricas */
+.loc-map {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+}
 
 .map {
   position: relative;
-  border-radius: var(--r);
+  flex: 1;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-  min-height: 380px;
+  min-height: 460px;
   background: var(--niebla);
 }
 
-.map iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; filter: saturate(.92) }
+.map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: saturate(.92)
+}
+
+.loc-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 10px 6px;
+  font-size: .94rem;
+  color: rgba(22, 48, 44, .72)
+}
+
+.loc-cap-brand { display: inline-flex; align-items: center; gap: 10px }
+.loc-cap-brand img { width: 26px; height: 26px }
+.loc-cap-brand b { color: var(--bosque); font-weight: 600 }
+
+.loc-cap a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(46, 115, 115, .3);
+  transition: text-decoration-color 200ms ease
+}
+
+.loc-cap a svg { width: 16px; height: 16px; transition: transform 200ms var(--ease-out) }
+
+@media (hover:hover) and (pointer:fine) {
+  .loc-cap a:hover { text-decoration-color: currentColor }
+  .loc-cap a:hover svg { transform: translate(2px, -2px) }
+}
+
+@media(max-width:900px) {
+  .loc-block { grid-template-columns: 1fr; gap: 40px }
+  .map { min-height: 360px }
+  .loc-dots { -webkit-mask-image: radial-gradient(ellipse 80% 40% at 50% 78%, #000 0%, transparent 100%); mask-image: radial-gradient(ellipse 80% 40% at 50% 78%, #000 0%, transparent 100%) }
+}
+
+@media(max-width:520px) {
+  .loc-worlds { margin-left: 0 }
+  .loc-actions .btn { flex: 1 1 auto; justify-content: center }
+  .loc-hours { padding: 16px 18px 8px }
+}
 
 /* ----- contacto + sumate al staff: dos columnas casi a todo el ancho ----- */
 .wrap-wide { max-width: 1440px; padding: 0 24px }
