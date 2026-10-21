@@ -1,0 +1,17 @@
+# Cloudflare Pages: encabezados HTTP de seguridad y caché.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# Las fotos casi no cambian: 30 días.
+/img/*
+  Cache-Control: public, max-age=2592000
+
+# CSS y JS se versionan con ?v=N en index.html: subir el número al cambiarlos.
+/css/*
+  Cache-Control: public, max-age=86400
+/js/*
+  Cache-Control: public, max-age=86400

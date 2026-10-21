@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "BIO Salud - Sitio web",
   "scripts": {
-    "dev": "npx live-server --port=3000 --open=index.html"
+    "dev": "npx live-server --port=3000 --open=index.html",
+    "build": "rm -rf dist && mkdir dist && cp -R index.html 404.html robots.txt sitemap.xml _headers css js img dist/ && rm -rf dist/img/originales && find dist -name .DS_Store -delete"
   }
 }

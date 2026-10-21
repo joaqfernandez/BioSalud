@@ -1,0 +1,22 @@
+# --- Sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Configuración local y secretos (nunca subir) ---
+.env
+.env.*
+.dev.vars
+.claude/settings.local.json
+*.pem
+*.key
+
+# --- Build y herramientas ---
+dist/
+node_modules/
+.wrangler/
+
+# --- Fotos originales en alta resolución (pesan MB; en el sitio van las versiones exportadas) ---
+img/originales/
+
+# --- Notas y análisis internos ---
+LOCAL-SEO-ANALYSIS-*.md
