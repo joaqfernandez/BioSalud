@@ -69,7 +69,7 @@ Estos datos son **placeholders** y deben reemplazarse con los reales. Buscá y c
 | --- | --- | --- |
 | WhatsApp | `https://wa.me/5492610000000` | Botón hero, contacto, footer |
 | Instagram | `https://www.instagram.com/espacio.biossalud/` (real) | Contacto, equipo, footer |
-| Email | `hola@biosalud.com.ar` | Contacto, footer |
+| Email | `marcelaleuzzi@hotmail.com` | Contacto, footer |
 | Horarios | Lun–Vie 08–20, Sáb 09–13 | Sección Ubicación |
 | Testimonios | 9 testimonios **de ejemplo** (nombres y textos inventados) | Sección Testimonios (`#testimonios`) — reemplazar por testimonios reales, con permiso de cada persona |
 | Fotos de especialidades | Fotos de stock de Unsplash (hotlink a images.unsplash.com) | Sección Especialidades: idealmente reemplazar por fotos propias del consultorio |
