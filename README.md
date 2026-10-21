@@ -70,7 +70,8 @@ Estos datos son **placeholders** y deben reemplazarse con los reales. Buscá y c
 | WhatsApp general | `https://wa.me/5492615114658` (real, Dra. Leuzzi, dueña) | Contacto, footer |
 | Instagram | `https://www.instagram.com/espacio.biossalud/` (real) | Contacto, equipo, footer |
 | Email | `marcelaleuzzi@hotmail.com` (real, personal de la Dra. Leuzzi hasta tener mail de dominio) | Contacto, footer |
-| Horarios | Lun–Vie 08–20, Sáb 09–13 | Sección Ubicación **y** datos estructurados del `<head>` (`openingHoursSpecification`): si cambian, cambiar los dos |
+| Horarios | Lun–Vie 08–20, Sáb 09–13 (confirmados) | Sección Ubicación **y** datos estructurados del `<head>` (`openingHoursSpecification`): si cambian, cambiar los dos |
+| Matrículas | Solo la Dra. Leuzzi: M.N. 6570 (en equipo, turnos y JSON-LD). Faltan las del resto del equipo | Equipo, Turnos, JSON-LD |
 | Testimonios | 9 testimonios **de ejemplo** (nombres y textos inventados) | Sección Testimonios (`#testimonios`) — reemplazar por testimonios reales, con permiso de cada persona |
 | Fotos de especialidades | Fotos de stock de Unsplash (hotlink a images.unsplash.com) | Sección Especialidades: idealmente reemplazar por fotos propias del consultorio |
 
@@ -92,9 +93,14 @@ python3 -m http.server 8000
 # luego abrir http://localhost:8000
 ```
 
-**Desplegar (cualquiera sirve, es estático):**
-- **Netlify / Vercel / Cloudflare Pages:** arrastrar la carpeta o conectar el repo. Deploy en segundos.
-- **GitHub Pages:** subir `index.html` a un repo y activar Pages.
+**Desplegar en Cloudflare Pages** (conectando el repo de GitHub):
+- Framework preset: *None*.
+- Build command: `npm run build`.
+- Build output directory: `dist`.
+
+`npm run build` copia a `dist/` **solo** lo público (`index.html`, `404.html`, `robots.txt`, `sitemap.xml`, `_headers`, `css/`, `js/`, `img/`). Así `.claude/`, `.impeccable/`, los `.md` y `package.json` nunca quedan en la web. Si agregás un archivo público nuevo en la raíz (por ejemplo otra página), sumalo al script `build` de `package.json`.
+
+`_headers` define los encabezados de seguridad y caché. `404.html` evita que Cloudflare responda cualquier URL inventada con la home.
 
 Dominio: **`bios-salud.com`** (comprado en Cloudflare). La dirección oficial es `https://bios-salud.com/` (sin `www`): el `canonical`, `og:url`, `robots.txt`, `sitemap.xml` y el JSON-LD la usan. Al publicar:
 - Redirigir `www.bios-salud.com` → `https://bios-salud.com/` con un 301 (Cloudflare → Rules → Redirect Rules).
