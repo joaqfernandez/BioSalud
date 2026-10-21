@@ -875,11 +875,20 @@ nav.main .cta { margin-left: 10px }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 22px;
 }
 
-@media(max-width:1023px) { .spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+/* Cinco cartas: tres arriba y dos más anchas abajo, así no queda una suelta */
+.spec-grid > .spec-card { grid-column: span 2 }
+.spec-grid > .spec-card:nth-child(n+4) { grid-column: span 3 }
+
+@media(max-width:1023px) {
+  .spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .spec-grid > .spec-card, .spec-grid > .spec-card:nth-child(n+4) { grid-column: auto }
+  .spec-grid > .spec-card:last-child:nth-child(odd) { grid-column: 1 / -1 }
+}
+
 @media(max-width:600px) { .spec-grid { grid-template-columns: 1fr } }
 
 .spec-card {
