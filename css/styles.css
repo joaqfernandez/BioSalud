@@ -635,46 +635,24 @@ nav.main .cta { margin-left: 10px }
   .world h3 { margin-top: 34px; max-width: calc(100% - 84px); font-size: 1.85rem }
 }
 
-/* ----- testimonios: columnas que se desplazan en loop ----- */
-.t-cols {
+/* ----- testimonios: reseñas reales de Google, en grilla fija ----- */
+.t-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  max-height: 680px;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  align-items: stretch;
 }
 
-@media(max-width:1023px) {
-  .t-cols { grid-template-columns: repeat(2, minmax(0, 1fr)) }
-  .t-col-3 { display: none }
-}
-
-@media(max-width:700px) {
-  .t-cols { grid-template-columns: 1fr; max-height: 560px }
-  .t-col-2 { display: none }
-}
-
-/* Dos copias de la lista: al subir -50% la segunda queda justo donde empezó la
-   primera, así el loop no salta. El padding-bottom iguala el gap entre copias. */
-.t-track {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding-bottom: 22px;
-  animation: t-scroll var(--dur, 40s) linear infinite;
-}
-
-/* Se frena al pasar el mouse o al navegar con teclado, para poder leer tranquilo */
-.t-cols:hover .t-track, .t-cols:focus-within .t-track { animation-play-state: paused }
-
-@keyframes t-scroll { to { transform: translateY(-50%) } }
-
-.t-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px }
+@media(max-width:1023px) { .t-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media(max-width:700px) { .t-grid { grid-template-columns: 1fr } }
 
 .t-card {
   --c: 46, 115, 115;
+  display: flex;
+  flex-direction: column;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -684,6 +662,8 @@ nav.main .cta { margin-left: 10px }
 
 .t-card.espacio { --c: 168, 106, 31 }
 
+.t-stars { margin: 0 0 14px; font-size: 1.1rem; letter-spacing: .12em; color: var(--sol-deep) }
+
 .t-card blockquote {
   margin: 0;
   font-size: 1.04rem;
@@ -691,7 +671,8 @@ nav.main .cta { margin-left: 10px }
   color: rgba(22, 48, 44, .86);
 }
 
-.t-who { display: flex; align-items: center; gap: 12px; margin-top: 22px }
+/* El autor queda abajo aunque las reseñas tengan largos distintos */
+.t-who { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 22px }
 
 .t-avatar {
   flex: none;
@@ -712,9 +693,29 @@ nav.main .cta { margin-left: 10px }
 
 .t-role { display: block; font-size: .9rem; color: rgba(22, 48, 44, .62); line-height: 1.3 }
 
-@media (prefers-reduced-motion: reduce) {
-  .t-track { animation: none }
+/* Resumen de Google: puntaje grande y link a la ficha */
+.t-summary {
+  align-items: flex-start;
+  justify-content: center;
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(150deg, var(--teal), var(--bosque));
 }
+
+.t-score { margin: 0; font-size: 3.4rem; font-weight: 600; line-height: 1 }
+.t-summary .t-stars { margin: 10px 0 6px; color: var(--sol) }
+.t-count { margin: 0 0 22px; color: rgba(255, 255, 255, .82) }
+
+.t-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 10px 0;
+}
+
+.t-link:hover { text-decoration-thickness: 2px }
+.t-link:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 4px }
 
 /* ----- equipo ----- */
 .team-showcase {
@@ -767,6 +768,23 @@ nav.main .cta { margin-left: 10px }
 }
 
 .team-photo.is-active img { filter: grayscale(0) brightness(1) }
+
+/* Iniciales provisorias hasta tener los retratos: ocupan la misma celda que la
+   foto y siguen el mismo apagado/encendido al pasar el mouse */
+.team-initials {
+  display: grid;
+  place-items: center;
+  width: 100%; height: 100%;
+  font-size: clamp(1.4rem, 4.2vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: #fff;
+  background: linear-gradient(145deg, var(--aqua), var(--teal) 60%, var(--bosque));
+  filter: saturate(.55) brightness(.95);
+  transition: filter 460ms ease;
+}
+
+.team-photo.is-active .team-initials { filter: none }
 .team-photo.is-dimmed { opacity: .6 }
 
 /* name list */
@@ -1447,6 +1465,16 @@ nav.main .cta { margin-left: 10px }
   object-fit: cover;
   background: var(--niebla);
   transition: opacity 320ms var(--ease-out), filter 320ms var(--ease-out);
+}
+
+.book-ini {
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(145deg, var(--aqua), var(--teal));
 }
 
 .book-name { margin: 0; font-size: 1.1rem; font-weight: 500; color: var(--bosque); line-height: 1.3 }

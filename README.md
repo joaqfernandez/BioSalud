@@ -71,8 +71,9 @@ Estos datos son **placeholders** y deben reemplazarse con los reales. Buscá y c
 | Instagram | `https://www.instagram.com/espacio.biossalud/` (real) | Contacto, equipo, footer |
 | Email | `marcelaleuzzi@hotmail.com` (real, personal de la Dra. Leuzzi hasta tener mail de dominio) | Contacto, footer |
 | Horarios | Lun–Vie 08–20, Sáb 09–13 (confirmados) | Sección Ubicación **y** datos estructurados del `<head>` (`openingHoursSpecification`): si cambian, cambiar los dos |
-| Matrículas | Solo la Dra. Leuzzi: M.N. 6570 (en equipo, turnos y JSON-LD). Faltan las del resto del equipo | Equipo, Turnos, JSON-LD |
-| Testimonios | 9 testimonios **de ejemplo** (nombres y textos inventados) | Sección Testimonios (`#testimonios`) — reemplazar por testimonios reales, con permiso de cada persona |
+| Fotos del equipo | Iniciales provisorias (pendiente: retratos del fotógrafo) | Equipo y Turnos |
+| Matrículas | Solo la Dra. Leuzzi: M.P. 6570 (en equipo, turnos y JSON-LD). Faltan las del resto del equipo | Equipo, Turnos, JSON-LD |
+| Testimonios | 2 reseñas reales de Google (texto tal cual) + resumen 5,0 / 3 reseñas | Sección Testimonios (`#testimonios`): sumar nuevas reseñas como `<li class="t-card">` y actualizar el conteo. Nombre + inicial, sin decir la especialidad |
 | Fotos de especialidades | Fotos de stock de Unsplash (hotlink a images.unsplash.com) | Sección Especialidades: idealmente reemplazar por fotos propias del consultorio |
 
 > **SEO:** el `<head>` tiene un bloque JSON-LD (`application/ld+json`) con la clínica, el equipo, el contacto y los horarios. Tiene que decir lo mismo que la página: cuando cambie un teléfono, un horario o un profesional, actualizar también ese bloque. Al sumar páginas nuevas, agregarlas a `sitemap.xml` y actualizar su `<lastmod>`.
