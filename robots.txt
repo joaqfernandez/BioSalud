@@ -1,0 +1,6 @@
+# BIOS Salud · https://bios-salud.com
+# El sitio es público: buscadores y asistentes de IA pueden leerlo completo.
+User-agent: *
+Allow: /
+
+Sitemap: https://bios-salud.com/sitemap.xml

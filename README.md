@@ -70,9 +70,11 @@ Estos datos son **placeholders** y deben reemplazarse con los reales. Buscá y c
 | WhatsApp general | `https://wa.me/5492615114658` (real, Dra. Leuzzi, dueña) | Contacto, footer |
 | Instagram | `https://www.instagram.com/espacio.biossalud/` (real) | Contacto, equipo, footer |
 | Email | `marcelaleuzzi@hotmail.com` (real, personal de la Dra. Leuzzi hasta tener mail de dominio) | Contacto, footer |
-| Horarios | Lun–Vie 08–20, Sáb 09–13 | Sección Ubicación |
+| Horarios | Lun–Vie 08–20, Sáb 09–13 | Sección Ubicación **y** datos estructurados del `<head>` (`openingHoursSpecification`): si cambian, cambiar los dos |
 | Testimonios | 9 testimonios **de ejemplo** (nombres y textos inventados) | Sección Testimonios (`#testimonios`) — reemplazar por testimonios reales, con permiso de cada persona |
 | Fotos de especialidades | Fotos de stock de Unsplash (hotlink a images.unsplash.com) | Sección Especialidades: idealmente reemplazar por fotos propias del consultorio |
+
+> **SEO:** el `<head>` tiene un bloque JSON-LD (`application/ld+json`) con la clínica, el equipo, el contacto y los horarios. Tiene que decir lo mismo que la página: cuando cambie un teléfono, un horario o un profesional, actualizar también ese bloque. Al sumar páginas nuevas, agregarlas a `sitemap.xml` y actualizar su `<lastmod>`.
 
 > Tip dev: son strings literales, un *find & replace* alcanza. Recomendado centralizarlos en un objeto de configuración cuando el sitio pase a framework (ver Fase 3+).
 
@@ -94,7 +96,11 @@ python3 -m http.server 8000
 - **Netlify / Vercel / Cloudflare Pages:** arrastrar la carpeta o conectar el repo. Deploy en segundos.
 - **GitHub Pages:** subir `index.html` a un repo y activar Pages.
 
-Para producción real conviene tener dominio propio (ej. `biosalud.com.ar`) y certificado HTTPS (los proveedores de arriba lo dan gratis).
+Dominio: **`bios-salud.com`** (comprado en Cloudflare). La dirección oficial es `https://bios-salud.com/` (sin `www`): el `canonical`, `og:url`, `robots.txt`, `sitemap.xml` y el JSON-LD la usan. Al publicar:
+- Redirigir `www.bios-salud.com` → `https://bios-salud.com/` con un 301 (Cloudflare → Rules → Redirect Rules).
+- Forzar HTTPS (Cloudflare → SSL/TLS → Always Use HTTPS).
+- No publicar los archivos internos: `.claude/`, `.impeccable/`, `*.md`, `package.json` y los originales grandes de `img/`.
+- Dar de alta el sitio en Google Search Console y enviar `https://bios-salud.com/sitemap.xml`.
 
 ---
 
