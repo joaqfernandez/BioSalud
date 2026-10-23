@@ -74,7 +74,7 @@ Estos datos son **placeholders** y deben reemplazarse con los reales. Buscá y c
 | Fotos del equipo | Iniciales provisorias (pendiente: retratos del fotógrafo) | Equipo y Turnos |
 | Matrículas | Solo la Dra. Leuzzi: M.P. 6570 (en equipo, turnos y JSON-LD). Faltan las del resto del equipo | Equipo, Turnos, JSON-LD |
 | Testimonios | 1 reseña real de Google (texto tal cual) + resumen 5,0 / 3 reseñas | Sección Testimonios (`#testimonios`): sumar nuevas reseñas como `<li class="t-card">` y actualizar el conteo. Nombre + inicial, sin decir la especialidad |
-| Fotos de especialidades | Fotos de stock de Unsplash (hotlink a images.unsplash.com) | Sección Especialidades: idealmente reemplazar por fotos propias del consultorio |
+| Fotos de especialidades | Fotos optimizadas servidas desde `img/` (`*-500.jpg` / `*-900.jpg`); Pediatría es de Unsplash, descargada y alojada en el sitio | Sección Especialidades: no enlazar imágenes externas; sumar cada foto nueva a `sitemap.xml` |
 
 > **SEO:** el `<head>` tiene un bloque JSON-LD (`application/ld+json`) con la clínica, el equipo, el contacto y los horarios. Tiene que decir lo mismo que la página: cuando cambie un teléfono, un horario o un profesional, actualizar también ese bloque. Al sumar páginas nuevas, agregarlas a `sitemap.xml` y actualizar su `<lastmod>`.
 
