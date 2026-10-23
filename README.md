@@ -16,7 +16,7 @@ Una página única (`index.html`), autocontenida y lista para publicar, derivada
 - Banda de **valores**.
 - **Espacio BIO**: para qué se alquila y cómo consultar.
 - **Turnos**: proceso en 3 pasos + anticipo del asistente con IA (fase futura).
-- **Ubicación** con **Google Maps embebido** (Pedro J. Godoy 840, Godoy Cruz) y botón “Cómo llegar”.
+- **Ubicación** con **Google Maps embebido** (Pedro J. Godoy 840, M5504FHB Godoy Cruz, Mendoza) y botón “Cómo llegar”.
 - **Contacto** (WhatsApp, Instagram, email) y footer.
 
 Esto corresponde a una primera entrega de la **Fase 3 (Desarrollo web)** del roadmap del manual.
