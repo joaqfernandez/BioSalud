@@ -444,7 +444,7 @@ nav.main .cta { margin-left: 10px }
 
 .hero .meta {
   width: 100%;
-  max-width: 860px;
+  max-width: 1040px;
   justify-content: center;
   margin-top: 54px;
   display: flex;
@@ -461,6 +461,12 @@ nav.main .cta { margin-left: 10px }
 }
 
 .hero .meta .v { color: #fff; font-weight: 500; margin-top: 5px; font-size: 1.02rem }
+
+/* en escritorio, las tres en una fila */
+@media(min-width:1100px) {
+  .hero .meta { flex-wrap: nowrap; gap: 48px }
+  .hero .meta .v { white-space: nowrap }
+}
 
 /* gotas ambiente */
 .drops { position: absolute; inset: 0; z-index: 1; opacity: .12; pointer-events: none }
